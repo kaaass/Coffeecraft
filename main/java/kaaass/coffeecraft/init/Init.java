@@ -10,25 +10,32 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class Init {
 	public static List<IInits> initList = new ArrayList();
 	
+	private static IInits blocks;
+	private static IInits items;
+	private static IInits eventHandler;
+	
 	public Init(){
 		//put init here
+		blocks = new Blocks();
+		items = new Items();
+		eventHandler = new EventHandler();
 	}
 	
-	public void preLoad(FMLPreInitializationEvent event){
+	public void preLoad(){
 		for(int i = 0; i < initList.size(); i++){
-			initList.get(i).preLoad(event);
+			initList.get(i).preLoad();
 		}
 	}
 	
-	public void load(FMLInitializationEvent event){
+	public void load(){
 		for(int i = 0; i < initList.size(); i++){
-			initList.get(i).load(event);
+			initList.get(i).load();
 		}
 	}
 	
-	public void postInit(FMLPostInitializationEvent event){
+	public void postInit(){
 		for(int i = 0; i < initList.size(); i++){
-			initList.get(i).postInit(event);
+			initList.get(i).postInit();
 		}
 	}
 }

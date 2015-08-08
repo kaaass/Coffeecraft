@@ -3,8 +3,12 @@ package kaaass.coffeecraft;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import kaaass.coffeecraft.init.IInits;
 import kaaass.coffeecraft.init.Init;
+import kaaass.coffeecraft.item.ItemCoffeeBean;
+import kaaass.coffeecraft.item.ItemCoffeeCoin;
 import kaaass.coffeecraft.proxy.CommonProxy;
 import cn.BiochemistryCraft.GUI.BioGuiHandler;
 import cn.BiochemistryCraft.Register.BCCEntityRegister;
@@ -20,31 +24,34 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = CoffeecraftMain.MODID, name = CoffeecraftMain.NAME, version = CoffeecraftMain.Version)
 
 public class CoffeecraftMain {
 	public static final String MODID = "coffeecraft";
-	public static final String NAME = MODID;
+	public static final String NAME = "	CoffeeCraft";
 	public static final String Version="1.0.1.1508_base";
 	
 	private static Init init = new Init();
+	
+	public static final CreativeTabs creativeTab = new CoffeeCreativeTab("coffeecraft");
 	
 	@SidedProxy(clientSide="kaaass.coffeecraft.proxy.ClientProxy",serverSide="kaaass.coffeecraft.proxy.CommonProxy")
 	public static CommonProxy proxy;
 	
 	@EventHandler
 	public void preLoad(FMLPreInitializationEvent event){
-		init.preLoad(event);
+		init.preLoad();
 	}
 
 	@EventHandler
 	public void load(FMLInitializationEvent event){
-		init.load(event);
+		init.load();
 	}
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		init.postInit(event);
+		init.postInit();
 	}
 }

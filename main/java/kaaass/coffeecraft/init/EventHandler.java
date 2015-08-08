@@ -4,9 +4,9 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-public class Blocks extends IInits{
-	public Blocks(){
-		super("Blocks");
+public class EventHandler extends IInits{
+	public EventHandler(){
+		super("EventHandler");
 	}
 	
 	@Override
@@ -23,5 +23,4 @@ public class Blocks extends IInits{
 	public void postInit() {
 		
 	}
-
 }
