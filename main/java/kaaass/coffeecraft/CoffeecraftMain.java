@@ -10,13 +10,6 @@ import kaaass.coffeecraft.init.Init;
 import kaaass.coffeecraft.item.ItemCoffeeBean;
 import kaaass.coffeecraft.item.ItemCoffeeCoin;
 import kaaass.coffeecraft.proxy.CommonProxy;
-import cn.BiochemistryCraft.GUI.BioGuiHandler;
-import cn.BiochemistryCraft.Register.BCCEntityRegister;
-import cn.BiochemistryCraft.Register.BCCRegisterBlock;
-import cn.BiochemistryCraft.Register.BCCRegisterItem;
-import cn.BiochemistryCraft.core.sick.SickCold;
-import cn.BiochemistryCraft.core.sick.SickRegistry;
-import cn.BiochemistryCraft.proxy.BCCcommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -31,7 +24,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class CoffeecraftMain {
 	public static final String MODID = "coffeecraft";
 	public static final String NAME = "	CoffeeCraft";
-	public static final String Version="1.0.1.1508_base";
+	public static final String Version = "1.0.1.1508_base";
 	
 	private static Init init = new Init();
 	

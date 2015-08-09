@@ -1,3 +1,5 @@
 itemGroup.coffeecraft=CoffeeCraft
 
 item.coffeeBean.name=Coffee Bean
+
+coffeecraft.chat.tomuchcaffeine=You're too excited to sleep. Maybe you've eaten too much caffeine.

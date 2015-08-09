@@ -1,3 +1,5 @@
 itemGroup.coffeecraft=咖啡工艺
 
 item.coffeeBean.name=咖啡豆
+
+coffeecraft.chat.tomuchcaffeine=现在你不能睡觉，你太兴奋了。说不定你摄入了过多的咖啡因。
