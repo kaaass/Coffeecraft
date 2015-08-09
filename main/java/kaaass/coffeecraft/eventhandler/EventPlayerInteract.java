@@ -1,5 +1,6 @@
 package kaaass.coffeecraft.eventhandler;
 
+import kaaass.coffeecraft.caffeine.Caffeine;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -12,8 +13,10 @@ public class EventPlayerInteract {
     public void onPlayerInteract(PlayerInteractEvent event){
         if (event.action == Action.RIGHT_CLICK_BLOCK){
             if(event.world.getBlock(event.x, event.y, event.z) == Blocks.bed){
-            	event.setCanceled(true);
-            	event.entityPlayer.addChatMessage(new ChatComponentTranslation("coffeecraft.chat.tomuchcaffeine"));
+            	if(Caffeine.getCaffeineFromPlayer(event.entityPlayer) >= Caffeine.sleepCaffeineValue){
+            		event.setCanceled(true);
+                	event.entityPlayer.addChatMessage(new ChatComponentTranslation("coffeecraft.chat.tomuchcaffeine"));
+            	}
             }
         }
     }

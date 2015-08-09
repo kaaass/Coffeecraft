@@ -1,5 +1,7 @@
 itemGroup.coffeecraft=咖啡工艺
 
+item.coffeeTreeFruit.name=咖啡树果
 item.coffeeBean.name=咖啡豆
+item.coffeeCoin.name=咖啡币
 
 coffeecraft.chat.tomuchcaffeine=现在你不能睡觉，你太兴奋了。说不定你摄入了过多的咖啡因。

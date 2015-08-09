@@ -7,17 +7,17 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemCoffeeBean extends ItemFood {
-	public ItemCoffeeBean(){
+public class ItemCoffeeTreeFruit extends ItemFood {
+	public ItemCoffeeTreeFruit(){
 		super(1, 0.1F, false);
-		setTextureName(CoffeecraftMain.MODID+":coffeeBean");
+		setTextureName(CoffeecraftMain.MODID+":coffeeTreeFruit");
 		setCreativeTab(CoffeecraftMain.creativeTab);
-		setUnlocalizedName("coffeeBean");
+		setUnlocalizedName("coffeeTreeFruit");
 	}
 	
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player){
 	    if (!world.isRemote){
-	    	Caffeine.addCaffeine(player, 5);
+	    	Caffeine.addCaffeine(player, 10);
 	    }
 	}
 }
