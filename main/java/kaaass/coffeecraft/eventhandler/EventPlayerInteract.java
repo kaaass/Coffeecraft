@@ -1,6 +1,8 @@
 package kaaass.coffeecraft.eventhandler;
 
 import kaaass.coffeecraft.caffeine.Caffeine;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;

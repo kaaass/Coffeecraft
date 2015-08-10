@@ -7,6 +7,7 @@ import kaaass.coffeecraft.item.ItemCaffeineTablets;
 import kaaass.coffeecraft.item.ItemCoffeeBean;
 import kaaass.coffeecraft.item.ItemCoffeeCoin;
 import kaaass.coffeecraft.item.ItemCoffeeTreeFruit;
+import kaaass.coffeecraft.item.ItemCoffeeTreeSapling;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -15,6 +16,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Items extends IInits{
 	public static Item coffeeTreeFruit;
+	public static Item coffeeTreeSapling;
 	public static Item coffeeBean;
 	public static Item coffeeCoin;
 	
@@ -29,6 +31,7 @@ public class Items extends IInits{
 	
 	public void preLoad() {
 		coffeeTreeFruit = new ItemCoffeeTreeFruit();
+		coffeeTreeSapling = new ItemCoffeeTreeSapling();
 		coffeeBean = new ItemCoffeeBean();
 		coffeeCoin = new ItemCoffeeCoin();
 		
@@ -38,6 +41,7 @@ public class Items extends IInits{
 		antiCaffeineTablets = new ItemAntiCaffeineTablets();
 		
 		GameRegistry.registerItem(coffeeTreeFruit, "coffeeTreeFruit");
+		GameRegistry.registerItem(coffeeTreeSapling, "coffeeTreeSapling");
 		GameRegistry.registerItem(coffeeBean, "coffeeBean");
 		GameRegistry.registerItem(coffeeCoin, "coffeeCoin");
 		
