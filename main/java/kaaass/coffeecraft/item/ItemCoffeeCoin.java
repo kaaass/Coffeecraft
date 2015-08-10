@@ -9,5 +9,6 @@ public class ItemCoffeeCoin extends Item{
 		setTextureName(CoffeecraftMain.MODID+":coffeeCoin");
 		setCreativeTab(CoffeecraftMain.creativeTab);
 		setUnlocalizedName("coffeeCoin");
+		setMaxStackSize(16);
 	}
 }
