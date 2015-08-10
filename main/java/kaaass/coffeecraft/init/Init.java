@@ -13,12 +13,14 @@ public class Init {
 	private static IInits blocks;
 	private static IInits items;
 	private static IInits eventHandler;
+	private static IInits craft;
 	
 	public Init(){
 		//put init here
 		blocks = new Blocks();
 		items = new Items();
 		eventHandler = new EventHandler();
+		craft = new Crafting();
 	}
 	
 	public void preLoad(){

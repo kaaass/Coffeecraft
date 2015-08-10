@@ -47,8 +47,9 @@ public class CaffeinePlayerInfo {
     
     public static void onLogin(EntityPlayer player){
     	PacketMain.sendToPlayer(new PacketCaffeineInfo(read(player)), player);
+    	Caffeine.update(player.worldObj, player);
     }
-
+    
     public static void onLogout(EntityPlayer player, int caffeine){
     	write(player, caffeine);
     	PacketMain.sendToPlayer(new PacketCaffeineInfo(Caffeine.getCaffeineFromPlayer(player)), player);

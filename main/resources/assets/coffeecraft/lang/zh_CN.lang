@@ -5,3 +5,13 @@ item.coffeeBean.name=咖啡豆
 item.coffeeCoin.name=咖啡币
 
 coffeecraft.chat.tomuchcaffeine=现在你不能睡觉，你太兴奋了。说不定你摄入了过多的咖啡因。
+
+death.attack.toMuchCaffeine=%1$s 被咖啡因毒死了。
+
+commands.caffeine.usage=/caffeine <set|get> <玩家名> <设置值>
+commands.caffeine.successSet=成功设置。
+commands.caffeine.successGet=成功获取, %1$s 的咖啡因值是 %2$s。
+commands.caffeine.tagError=数据错误: %s.
+commands.caffeine.tagError.tag=格式错误
+commands.caffeine.tagError.player=找不到指定玩家
+commands.caffeine.tagError.unknown=未知错误

@@ -5,3 +5,13 @@ item.coffeeBean.name=Coffee Bean
 item.coffeeCoin.name=Coffee Coin
 
 coffeecraft.chat.tomuchcaffeine=You're too excited to sleep. Maybe you've eaten too much caffeine.
+
+death.attack.toMuchCaffeine=%1$s was poisoned by caffeine.
+
+commands.caffeine.usage=/caffeine <set|get> <player> <value>
+commands.caffeine.successSet=Setting succeeded.
+commands.caffeine.successGet=Getting succeeded, the caffeine value of %1$s is %2$s.
+commands.caffeine.tagError=Data tag parsing failed: %s.
+commands.caffeine.tagError.tag=Wrong Format
+commands.caffeine.tagError.player=Wrong Player Name
+commands.caffeine.tagError.unknown=Unknown

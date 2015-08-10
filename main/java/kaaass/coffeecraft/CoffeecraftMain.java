@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import kaaass.coffeecraft.command.CommandCaffeine;
 import kaaass.coffeecraft.init.IInits;
 import kaaass.coffeecraft.init.Init;
 import kaaass.coffeecraft.item.ItemCoffeeBean;
@@ -16,6 +17,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -24,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class CoffeecraftMain {
 	public static final String MODID = "coffeecraft";
 	public static final String NAME = "	CoffeeCraft";
-	public static final String Version = "1.0.1.1508_release";
+	public static final String Version = "1.0.3.1508_base";
 	
 	private static Init init = new Init();
 	
@@ -37,7 +39,7 @@ public class CoffeecraftMain {
 	public void preLoad(FMLPreInitializationEvent event){
 		init.preLoad();
 	}
-
+	
 	@EventHandler
 	public void load(FMLInitializationEvent event){
 		init.load();
@@ -47,4 +49,9 @@ public class CoffeecraftMain {
 	public void postInit(FMLPostInitializationEvent event){
 		init.postInit();
 	}
+	
+	@Mod.EventHandler
+    public void serverStarting(FMLServerStartingEvent event){
+		event.registerServerCommand(new CommandCaffeine());
+    }
 }

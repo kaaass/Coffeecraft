@@ -3,6 +3,7 @@ package kaaass.coffeecraft.init;
 
 import net.minecraftforge.common.MinecraftForge;
 import kaaass.coffeecraft.CoffeecraftMain;
+import kaaass.coffeecraft.eventhandler.EventEntityLiving;
 import kaaass.coffeecraft.eventhandler.EventPlayer;
 import kaaass.coffeecraft.eventhandler.EventPlayerInteract;
 import kaaass.coffeecraft.network.PacketMain;
@@ -33,6 +34,7 @@ public class EventHandler extends IInits{
 		
 		MinecraftForge.EVENT_BUS.register(new EventPlayerInteract());
 		FMLCommonHandler.instance().bus().register(new EventPlayer());
+		MinecraftForge.EVENT_BUS.register(new EventEntityLiving());
 	}
 
 	@Override
