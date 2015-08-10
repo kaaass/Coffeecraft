@@ -41,6 +41,7 @@ public class Caffeine {
 		if(a != -1){
 			caffeineList.add(a, caffeineList.get(a) + add);
 		}
+		CaffeinePlayerInfo.onUse(player, caffeineList.get(a));
 	}
 	
 	public static int getCaffeineFromPlayer(EntityPlayer player){

@@ -13,16 +13,20 @@ import kaaass.coffeecraft.network.AbstractPacket;
 import kaaass.coffeecraft.network.ICallClient;
 
 public class PacketCaffeineInfo extends AbstractPacket implements ICallClient{
-	private NBTTagCompound tagCompound = new NBTTagCompound();
+	private NBTTagCompound tagCompound;
 	
 	public PacketCaffeineInfo(){
-		CaffeinePlayerInfo.write(tagCompound, CaffeinePlayerInfo.read(tagCompound));
+		
+	}
+	
+	public PacketCaffeineInfo(int a){
+		tagCompound = new NBTTagCompound();
+		CaffeinePlayerInfo.write(tagCompound, a);
 	}
 	
 	@Override
 	public IMessage handleClientSide(EntityPlayer player) {
-		CaffeinePlayerInfo cpi = new CaffeinePlayerInfo();
-		cpi.write(player, cpi.read(tagCompound));
+		CaffeinePlayerInfo.write(player, CaffeinePlayerInfo.read(player));
 		return null;
 	}
 

@@ -24,7 +24,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class CoffeecraftMain {
 	public static final String MODID = "coffeecraft";
 	public static final String NAME = "	CoffeeCraft";
-	public static final String Version = "1.0.1.1508_base";
+	public static final String Version = "1.0.1.1508_release";
 	
 	private static Init init = new Init();
 	

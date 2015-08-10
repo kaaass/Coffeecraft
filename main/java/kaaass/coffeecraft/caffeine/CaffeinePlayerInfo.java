@@ -45,16 +45,16 @@ public class CaffeinePlayerInfo {
 		return tagCompound.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
     }
     
-    public static void onTaken(EntityPlayer player, int caffeine){
-        write(player, caffeine);
-        PacketMain.sendToPlayer(new PacketCaffeineInfo(), player);
-    }
-    
     public static void onLogin(EntityPlayer player){
-    	PacketMain.sendToPlayer(new PacketCaffeineInfo(), player);
+    	PacketMain.sendToPlayer(new PacketCaffeineInfo(read(player)), player);
     }
 
     public static void onLogout(EntityPlayer player, int caffeine){
-    	onTaken(player, caffeine);
+    	write(player, caffeine);
+    	PacketMain.sendToPlayer(new PacketCaffeineInfo(Caffeine.getCaffeineFromPlayer(player)), player);
+    }
+    
+    public static void onUse(EntityPlayer player, int caffeine){
+    	onLogout(player, caffeine);
     }
 }
