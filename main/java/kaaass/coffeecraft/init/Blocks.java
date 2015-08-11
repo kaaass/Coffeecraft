@@ -31,7 +31,7 @@ public class Blocks extends IInits{
 		GameRegistry.registerBlock(coffeeTreeFruitBlock, "coffeeTreeFruitBlock");
 		GameRegistry.registerBlock(coffeeTreeLeaveBlock, "coffeeTreeLeaveBlock");
 		GameRegistry.registerBlock(coffeeTreeSaplingBlock, "coffeeTreeSaplingBlock");
-		GameRegistry.registerBlock(factorOre, "factorsOre");
+		GameRegistry.registerBlock(factorOre, "factorOre");
 	}
 
 	@Override

@@ -27,17 +27,17 @@ public class GeneraterHandler implements IWorldGenerator {
 	    }
 	}
 	
-	private void generateCoffeeTree(Random random, World world, int chunkX, int chunkZ, int maxHeight){
-		for(int i = 0; i < random.nextInt(5); i++){
-			int x = chunkX * 16 + random.nextInt(16);
-			int y = random.nextInt(maxHeight) + 60;
-			int z = chunkZ * 16 + random.nextInt(16);
+	private void generateCoffeeTree(Random rand, World world, int chunkX, int chunkZ, int maxHeight){
+		for(int i = 0; i < rand.nextInt(5); i++){
+			int x = chunkX * 16 + rand.nextInt(16);
+			int y = rand.nextInt(maxHeight) + 60;
+			int z = chunkZ * 16 + rand.nextInt(16);
 			for (int a = 0; a < 10; a++){
-				int l = x + random.nextInt(8) - random.nextInt(8);
-				int j = y + random.nextInt(4) - random.nextInt(4);
-				int k = z + random.nextInt(8) - random.nextInt(8);
+				int l = x + rand.nextInt(8) - rand.nextInt(8);
+				int j = y + rand.nextInt(4) - rand.nextInt(4);
+				int k = z + rand.nextInt(8) - rand.nextInt(8);
 				if(world.isAirBlock(l, j, k) && isDirt(world.getBlock(l, j - 1, k))){
-					((BlockCoffeeTreeSapling)Blocks.coffeeTreeSaplingBlock).treeGene(world, l, j, k, random);
+					((BlockCoffeeTreeSapling)Blocks.coffeeTreeSaplingBlock).treeGene(world, l, j, k, rand);
 					return;
 				}
 			}

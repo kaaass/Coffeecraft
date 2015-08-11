@@ -10,6 +10,7 @@ import kaaass.coffeecraft.eventhandler.EventPlayerInteract;
 import kaaass.coffeecraft.network.PacketMain;
 import kaaass.coffeecraft.network.packet.PacketCaffeineInfo;
 import kaaass.coffeecraft.world.gen.GeneraterHandler;
+import kaaass.coffeecraft.world.gen.OreGenerator;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -28,6 +29,7 @@ public class EventHandler extends IInits{
 	@Override
 	public void preLoad() {
 		GameRegistry.registerWorldGenerator(new GeneraterHandler(), 1);
+		GameRegistry.registerWorldGenerator(new OreGenerator(), 0);
 	}
 
 	@Override

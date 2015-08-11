@@ -9,6 +9,7 @@ import kaaass.coffeecraft.item.ItemCoffeeCoin;
 import kaaass.coffeecraft.item.ItemCoffeeTreeFruit;
 import kaaass.coffeecraft.item.ItemCoffeeTreeSapling;
 import kaaass.coffeecraft.item.ItemExtractionFactor;
+import kaaass.coffeecraft.item.ItemFat;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -26,6 +27,7 @@ public class Items extends IInits{
 	public static Item caffeineTablets;
 	public static Item antiCaffeineTablets;
 	
+	public static Item fat;
 	public static Item extractionFactor;
 	
 	public Items(){
@@ -43,6 +45,7 @@ public class Items extends IInits{
 		caffeineTablets = new ItemCaffeineTablets();
 		antiCaffeineTablets = new ItemAntiCaffeineTablets();
 		
+		fat = new ItemFat();
 		extractionFactor = new ItemExtractionFactor();
 		
 		GameRegistry.registerItem(coffeeTreeFruit, "coffeeTreeFruit");
@@ -55,6 +58,7 @@ public class Items extends IInits{
 		GameRegistry.registerItem(caffeineTablets, "caffeineTablets");
 		GameRegistry.registerItem(antiCaffeineTablets, "antiCaffeineTablets");
 		
+		GameRegistry.registerItem(fat, "fat");
 		GameRegistry.registerItem(extractionFactor, "extractionFactor");
 	}
 
