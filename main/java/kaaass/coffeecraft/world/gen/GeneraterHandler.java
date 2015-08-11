@@ -18,12 +18,12 @@ public class GeneraterHandler implements IWorldGenerator {
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		WorldChunkManager worldchunkmanager = world.getWorldChunkManager();
 	    if (worldchunkmanager != null){
-	      BiomeGenBase biome = worldchunkmanager.getBiomeGenAt(chunkX * 16, chunkZ * 16);
-	      if(BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN) || BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.FOREST)){
-	        if(rand.nextInt(24) == 0){
-	          generateCoffeeTree(rand, world, chunkX, chunkZ, 60);
-	        }
-	      }
+	    	BiomeGenBase biome = worldchunkmanager.getBiomeGenAt(chunkX * 16, chunkZ * 16);
+	    	if(BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN) || BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.JUNGLE)){
+	    		if(rand.nextInt(24) == 0){
+	    			generateCoffeeTree(rand, world, chunkX, chunkZ, 60);
+	    		}
+	    	}
 	    }
 	}
 	

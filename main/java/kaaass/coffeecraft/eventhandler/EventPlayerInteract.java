@@ -1,10 +1,14 @@
 package kaaass.coffeecraft.eventhandler;
 
+import java.util.Random;
+
 import kaaass.coffeecraft.caffeine.Caffeine;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -21,5 +25,12 @@ public class EventPlayerInteract {
             	}
             }
         }
+    }
+	
+	@SubscribeEvent
+	public void onPlayerAttack(AttackEntityEvent event){
+		EntityPlayer player = event.entityPlayer;
+        Random rand = event.entityPlayer.worldObj.rand;
+        Caffeine.reduceCaffeine(player, rand.nextInt(5));
     }
 }

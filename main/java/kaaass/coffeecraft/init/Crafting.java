@@ -17,19 +17,51 @@ public class Crafting extends IInits {
 
 	@Override
 	public void load() {
+		GameRegistry.addRecipe(new ItemStack(Items.coffeePill, 1), new Object[]{
+			" A ", 
+			"ABA",
+			" A ",
+			'A', Items.fat, 'B', Items.coffeePowder});
 		GameRegistry.addRecipe(new ItemStack(Items.coffeeCoin, 1), new Object[]{
 			"AAA", 
 			"ABA",
 			"AAA",
 			'A', Item.getItemById(266), 'B', Items.coffeeBean});
-		GameRegistry.addRecipe(new ItemStack(Items.caffeineTablets, 1), new Object[]{
+		GameRegistry.addRecipe(new ItemStack(Items.caffeineTablet, 1), new Object[]{
 			"AA", 
 			"AA", 
 			'A', Items.caffeine});
-		GameRegistry.addRecipe(new ItemStack(Items.antiCaffeineTablets, 1), new Object[]{
+		GameRegistry.addRecipe(new ItemStack(Items.antiCaffeineTablet, 1), new Object[]{
 			"AA", 
 			"AA", 
 			'A', Items.antiCaffeine});
+		GameRegistry.addRecipe(new ItemStack(Items.extractionFactor, 2), new Object[]{
+			"AAA", 
+			"ABA",
+			"AAA",
+			'A', Items.fat, 'B', new ItemStack(Items.extractionFactor, 0)});
+		GameRegistry.addRecipe(new ItemStack(Items.extractionFactor, 3), new Object[]{
+			"AAA", 
+			"ABA",
+			"AAA",
+			'A', Items.caffeine, 'B', new ItemStack(Items.extractionFactor, 0)});
+		GameRegistry.addRecipe(new ItemStack(Items.extractionFactor, 4), new Object[]{
+			"AAA", 
+			"ABA",
+			"AAA",
+			'A', Items.caffeine, 'B', new ItemStack(Items.extractionFactor, 1)});
+		GameRegistry.addRecipe(new ItemStack(Items.filterNet, 1), new Object[]{
+			"BAB", 
+			"ABA",
+			"BAB",
+			'A', Item.getItemById(339), 'B', Item.getItemById(287)});
+		GameRegistry.addRecipe(new ItemStack(Items.filter, 1), new Object[]{
+			"AAA", 
+			"ABA",
+			"AAA",
+			'A', Item.getItemById(280), 'B', Items.filterNet});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.extractionFactor, 1, 1), new Object[]{new ItemStack(Items.extractionFactor, 1, 0), Item.getItemById(376)});
 		
 		GameRegistry.addSmelting(Blocks.factorOre, new ItemStack(Items.extractionFactor, 1, 0), 2F);
 		

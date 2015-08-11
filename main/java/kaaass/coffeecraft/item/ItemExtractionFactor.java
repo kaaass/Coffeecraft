@@ -13,7 +13,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 
 public class ItemExtractionFactor extends Item {
-	private static String[] name = {"extractionFactor", "fatFactor", "caffeineFactor", "antiCaffeineFactor"};
+	private static String[] name = {"extractionFactor", "antiFactor", "fatFactor", "caffeineFactor", "antiCaffeineFactor"};
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iconArray;
 	
@@ -23,12 +23,12 @@ public class ItemExtractionFactor extends Item {
 		setUnlocalizedName("extractionFactor");
 		setHasSubtypes(true);
 	    setMaxDamage(0);
-	    setCreativeTab(CoffeecraftMain.creativeTab);
+		setMaxStackSize(16);
 	}
 	
 	public String getUnlocalizedName(ItemStack stack){
 	    int i = MathHelper.clamp_int(stack.getItemDamage(), 0, name.length - 1);
-	    return name[i];
+	    return "item." + name[i];
 	}
 	
 	@SideOnly(Side.CLIENT)

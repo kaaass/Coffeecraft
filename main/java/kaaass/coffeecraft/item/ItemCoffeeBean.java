@@ -17,7 +17,7 @@ public class ItemCoffeeBean extends ItemFood {
 	
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player){
 	    if (!world.isRemote){
-	    	Caffeine.addCaffeine(player, 5);
+	    	Caffeine.addCaffeine(player, 10);
 	    }
 	}
 }

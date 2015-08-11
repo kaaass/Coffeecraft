@@ -56,7 +56,7 @@ public class CommandCaffeine extends CommandBase {
 				if(arg.length < 1){
 					sender.addChatMessage(new ChatComponentTranslation("commands.caffeine.tagError.tag"));
 					return;
-				}else if(arg.length == 3){
+				}else if(arg.length == 2){
 					if(!isPlayer(arg[1])){
 						sender.addChatMessage(new ChatComponentTranslation("commands.caffeine.tagError.player"));
 						return;
@@ -70,7 +70,7 @@ public class CommandCaffeine extends CommandBase {
 						return;
 					}
 				}else{
-					if(arg.length != 2){
+					if(arg.length != 1){
 						sender.addChatMessage(new ChatComponentTranslation("commands.caffeine.tagError.tag"));
 						return;
 					}

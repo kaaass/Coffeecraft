@@ -12,15 +12,16 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 public class Caffeine {
-	public final static int sleepCaffeineValue = 15;
-	public final static int nightVCaffeineValue = 60;
-	public final static int hurtCaffeineValue = 65;
+	public final static int sleepCaffeineValue = 25;
+	public final static int nightVCaffeineValue = 80;
+	public final static int hurtCaffeineValue = 85;
 	
 	private static List<EntityPlayer> playerList = new ArrayList();
 	private static List<String> nameList = new ArrayList();
 	private static List<Integer> caffeineList = new ArrayList();
 	
 	private static Timer timer;
+	private static Timer timer2;
 	
 	public static void addPlayer(EntityPlayer player){
 		playerList.add(player);
@@ -122,6 +123,8 @@ public class Caffeine {
 		if(getCaffeineFromPlayer(player) >= hurtCaffeineValue){
 			timer = new Timer();
 			timer.scheduleAtFixedRate(new CaffeineHurt(player), 1 / 20, 1500);
+			timer2 = new Timer();
+			timer2.scheduleAtFixedRate(new CaffeineReduce(player, timer2), 1 / 20, 2000);
 			player.addPotionEffect(new PotionEffect(Potion.weakness.id, 3600, 0));
 			player.addPotionEffect(new PotionEffect(Potion.blindness.id, 1200, 0));
 			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1800, 0));

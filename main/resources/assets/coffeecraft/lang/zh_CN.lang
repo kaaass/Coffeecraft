@@ -1,8 +1,25 @@
 itemGroup.coffeecraft=咖啡工艺
 
+tile.factorOre.name=因子矿
+
 item.coffeeTreeFruit.name=咖啡树果
 item.coffeeBean.name=咖啡豆
+item.coffeePowder.name=咖啡粉
+item.coffeePill.name=咖啡丸
 item.coffeeCoin.name=咖啡币
+item.coffeeCore.name=Coffee Core
+item.caffeine.name=咖啡因
+item.antiCaffeine.name=反咖啡因
+item.caffeineTablet.name=咖啡因片
+item.antiCaffeineTablet.name=反咖啡因片
+item.fat.name=动物性脂肪
+item.extractionFactor.name=提取因子
+item.antiFactor.name=反提取因子
+item.fatFactor.name=脂肪提取因子
+item.caffeineFactor.name=咖啡因提取因子
+item.antiCaffeineFactor.name=反咖啡因提取因子
+item.filterNet.name=过滤网芯
+item.filter.name=过滤网
 
 coffeecraft.chat.tomuchcaffeine=现在你不能睡觉，你太兴奋了。说不定你摄入了过多的咖啡因。
 

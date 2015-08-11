@@ -9,23 +9,20 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemCoffeeTreeFruit extends ItemFood {
-	public ItemCoffeeTreeFruit(){
-		super(1, 0.1F, false);
-		setTextureName(CoffeecraftMain.MODID+":coffeeTreeFruit");
+public class ItemCoffeePill extends ItemFood {
+	public ItemCoffeePill(){
+		super(4, 3.5F, false);
+		setTextureName(CoffeecraftMain.MODID+":coffeePill");
 		setCreativeTab(CoffeecraftMain.creativeTab);
-		setUnlocalizedName("coffeeTreeFruit");
+		setUnlocalizedName("coffeeBean");
 	}
 	
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player){
 	    if (!world.isRemote){
-	    	Caffeine.addCaffeine(player, 10 + world.rand.nextInt(10));
-	    	if(world.rand.nextInt(5) == 0){
-	    		if(world.rand.nextInt(4) == 0){
-	    			player.addPotionEffect(new PotionEffect(Potion.hunger.id, 600, 0));
-	    		}else{
-	    			player.addPotionEffect(new PotionEffect(Potion.hunger.id, 200, 0));
-	    		}
+	    	Caffeine.addCaffeine(player, 10 + world.rand.nextInt(5));
+	    	player.setHealth(player.getHealth() + 4);
+	    	if(world.rand.nextInt(7) <= 1){
+	    		player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600 + world.rand.nextInt(4) * 300, 0));
 	    	}
 	    }
 	}
