@@ -1,9 +1,15 @@
 itemGroup.coffeecraft=CoffeeCraft
 
 tile.factorOre.name=Factor Ore
+tile.coffeeBaker.name=Coffee Baker
 
 item.coffeeTreeFruit.name=Coffee Tree Fruit
+item.coffeeTreeSapling.name=Coffee Tree Sapling
 item.coffeeBean.name=Coffee Bean
+item.coffeeBean.steamed.name=Coffee Bean(Steamed)
+item.coffeeBean.dried.name=Coffee Bean(Dried)
+item.coffeeBean.baked.name=Coffee Bean(Baked)
+item.coffeeBean.burnt.name=Burnt Coffee Bean
 item.coffeePowder.name=Coffee Powder
 item.coffeePill.name=Coffee Pill
 item.coffeeCoin.name=Coffee Coin
@@ -20,6 +26,9 @@ item.caffeineFactor.name=Caffeine Factor
 item.antiCaffeineFactor.name=Anti Caffeine Factor
 item.filterNet.name=Filter Net
 item.filter.name=Filter
+
+container.inventory=Inventory
+container.coffeeBaker=Coffee Baker
 
 coffeecraft.chat.tomuchcaffeine=You're too excited to sleep. Maybe you've eaten too much caffeine.
 

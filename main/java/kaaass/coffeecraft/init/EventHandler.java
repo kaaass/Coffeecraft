@@ -7,6 +7,7 @@ import kaaass.coffeecraft.eventhandler.EventBonemeal;
 import kaaass.coffeecraft.eventhandler.EventEntityLiving;
 import kaaass.coffeecraft.eventhandler.EventPlayer;
 import kaaass.coffeecraft.eventhandler.EventPlayerInteract;
+import kaaass.coffeecraft.gui.GuiHandler;
 import kaaass.coffeecraft.network.PacketMain;
 import kaaass.coffeecraft.network.packet.PacketCaffeineInfo;
 import kaaass.coffeecraft.world.gen.GeneraterHandler;

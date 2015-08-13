@@ -1,5 +1,8 @@
 package kaaass.coffeecraft.init;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -35,21 +38,21 @@ public class Crafting extends IInits {
 			"AA", 
 			"AA", 
 			'A', Items.antiCaffeine});
-		GameRegistry.addRecipe(new ItemStack(Items.extractionFactor, 2), new Object[]{
+		GameRegistry.addRecipe(new ItemStack(Items.extractionFactor, 1, 2), new Object[]{
 			"AAA", 
 			"ABA",
 			"AAA",
-			'A', Items.fat, 'B', new ItemStack(Items.extractionFactor, 0)});
-		GameRegistry.addRecipe(new ItemStack(Items.extractionFactor, 3), new Object[]{
+			'A', Items.fat, 'B', new ItemStack(Items.extractionFactor, 1, 0)});
+		GameRegistry.addRecipe(new ItemStack(Items.extractionFactor, 1, 3), new Object[]{
 			"AAA", 
 			"ABA",
 			"AAA",
-			'A', Items.caffeine, 'B', new ItemStack(Items.extractionFactor, 0)});
-		GameRegistry.addRecipe(new ItemStack(Items.extractionFactor, 4), new Object[]{
+			'A', Items.caffeine, 'B', new ItemStack(Items.extractionFactor, 1, 0)});
+		GameRegistry.addRecipe(new ItemStack(Items.extractionFactor, 1, 4), new Object[]{
 			"AAA", 
 			"ABA",
 			"AAA",
-			'A', Items.caffeine, 'B', new ItemStack(Items.extractionFactor, 1)});
+			'A', Items.caffeine, 'B', new ItemStack(Items.extractionFactor, 1, 1)});
 		GameRegistry.addRecipe(new ItemStack(Items.filterNet, 1), new Object[]{
 			"BAB", 
 			"ABA",

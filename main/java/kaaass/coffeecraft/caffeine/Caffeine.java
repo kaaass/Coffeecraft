@@ -56,9 +56,14 @@ public class Caffeine {
 	
 	public static void reduceCaffeine(EntityPlayer player, int reduce){
 		int a = find(player);
-		if(a != -1){
-			caffeineList.add(a, caffeineList.get(a) - reduce);
+		if(a == -1){
+			return;
 		}
+		int r = caffeineList.get(a) - reduce;
+		if(r < 0){
+			r = 0;
+		}
+		caffeineList.add(a, r);
 		CaffeinePlayerInfo.onUse(player, caffeineList.get(a));
 		update(player.worldObj, player);
 	}

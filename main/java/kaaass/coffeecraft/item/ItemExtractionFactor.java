@@ -50,5 +50,5 @@ public class ItemExtractionFactor extends Item {
 	public IIcon getIconFromDamage(int damage){
 	    int a = MathHelper.clamp_int(damage, 0, name.length - 1);
 	    return iconArray[a];
-	  }
+	}
 }

@@ -6,12 +6,14 @@ import java.util.List;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import kaaass.coffeecraft.command.CommandCaffeine;
+import kaaass.coffeecraft.gui.GuiHandler;
 import kaaass.coffeecraft.init.IInits;
 import kaaass.coffeecraft.init.Init;
 import kaaass.coffeecraft.item.ItemCoffeeBean;
 import kaaass.coffeecraft.item.ItemCoffeeCoin;
 import kaaass.coffeecraft.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -26,7 +28,10 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class CoffeecraftMain {
 	public static final String MODID = "coffeecraft";
 	public static final String NAME = "	CoffeeCraft";
-	public static final String Version = "1.0.6.1508_RC";
+	public static final String Version = "1.1.0.1508_Alpha";
+	
+	@Instance(MODID)
+	public static CoffeecraftMain instance;
 	
 	private static Init init = new Init();
 	

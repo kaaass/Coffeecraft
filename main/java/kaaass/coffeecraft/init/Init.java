@@ -14,6 +14,7 @@ public class Init {
 	private static IInits items;
 	private static IInits eventHandler;
 	private static IInits craft;
+	private static IInits gui;
 	
 	public Init(){
 		//put init here
@@ -21,6 +22,7 @@ public class Init {
 		items = new Items();
 		eventHandler = new EventHandler();
 		craft = new Crafting();
+		gui = new Gui();
 	}
 	
 	public void preLoad(){

@@ -12,6 +12,6 @@ public class CoffeeCreativeTab extends CreativeTabs {
 	
 	@Override
 	public Item getTabIconItem() {
-		return Items.coffeeBean;
+		return Items.coffeePowder;
 	}
 }

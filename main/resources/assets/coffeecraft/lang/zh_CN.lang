@@ -1,13 +1,19 @@
 itemGroup.coffeecraft=咖啡工艺
 
 tile.factorOre.name=因子矿
+tile.coffeeBaker.name=咖啡烘焙机
 
 item.coffeeTreeFruit.name=咖啡树果
+item.coffeeTreeSapling.name=咖啡树种
 item.coffeeBean.name=咖啡豆
+item.coffeeBean.steamed.name=咖啡豆(蒸培)
+item.coffeeBean.dried.name=咖啡豆(脱水)
+item.coffeeBean.baked.name=咖啡豆(初步烘焙)
+item.coffeeBean.burnt.name=焦咖啡豆
 item.coffeePowder.name=咖啡粉
 item.coffeePill.name=咖啡丸
 item.coffeeCoin.name=咖啡币
-item.coffeeCore.name=Coffee Core
+item.coffeeCore.name=咖啡核心
 item.caffeine.name=咖啡因
 item.antiCaffeine.name=反咖啡因
 item.caffeineTablet.name=咖啡因片
@@ -20,6 +26,9 @@ item.caffeineFactor.name=咖啡因提取因子
 item.antiCaffeineFactor.name=反咖啡因提取因子
 item.filterNet.name=过滤网芯
 item.filter.name=过滤网
+
+container.inventory=背包
+container.coffeeBaker=咖啡烘焙机
 
 coffeecraft.chat.tomuchcaffeine=现在你不能睡觉，你太兴奋了。说不定你摄入了过多的咖啡因。
 
