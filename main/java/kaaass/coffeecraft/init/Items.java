@@ -15,6 +15,7 @@ import kaaass.coffeecraft.item.ItemExtractionFactor;
 import kaaass.coffeecraft.item.ItemFat;
 import kaaass.coffeecraft.item.ItemFilter;
 import kaaass.coffeecraft.item.ItemFilterNet;
+import kaaass.coffeecraft.item.ItemMixedPowder;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -39,6 +40,7 @@ public class Items extends IInits{
 	public static Item extractionFactor;
 	public static Item filterNet;
 	public static Item filter;
+	public static Item mixedPowder;
 	
 	public Items(){
 		super("Items");
@@ -62,6 +64,7 @@ public class Items extends IInits{
 		extractionFactor = new ItemExtractionFactor();
 		filterNet = new ItemFilterNet();
 		filter = new ItemFilter();
+		mixedPowder = new ItemMixedPowder();
 		
 		GameRegistry.registerItem(coffeeTreeFruit, "coffeeTreeFruit");
 		GameRegistry.registerItem(coffeeTreeSapling, "coffeeTreeSapling");
@@ -80,6 +83,7 @@ public class Items extends IInits{
 		GameRegistry.registerItem(extractionFactor, "extractionFactor");
 		GameRegistry.registerItem(filterNet, "filterNet");
 		GameRegistry.registerItem(filter, "filter");
+		GameRegistry.registerItem(mixedPowder, "mixedPowder");
 	}
 
 	public void load() {

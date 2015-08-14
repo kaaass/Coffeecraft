@@ -13,16 +13,15 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class ContainerCoffeeBaker extends Container {
-	private TileEntityCoffeeBaker tile;
+public class ContainerCoffeeGrinder extends Container {
+	private TileEntityCoffeeGrinder tile;
 	private int lastProgressTime = 0;
-	private int lastTemperature = 0;
 
-	public ContainerCoffeeBaker(InventoryPlayer inventory, TileEntityCoffeeBaker tileEntityCoffeeBaker) {
-		this.tile = tileEntityCoffeeBaker;
-		this.addSlotToContainer(new Slot(tileEntityCoffeeBaker, 0, 56, 23));
-		this.addSlotToContainer(new Slot(tileEntityCoffeeBaker, 1, 56, 47));
-		this.addSlotToContainer(new Slot(tileEntityCoffeeBaker, 2, 116, 35));
+	public ContainerCoffeeGrinder(InventoryPlayer inventory, TileEntityCoffeeGrinder tile) {
+		this.tile = tile;
+		this.addSlotToContainer(new Slot(tile, 0, 56, 23));
+		this.addSlotToContainer(new Slot(tile, 1, 56, 47));
+		this.addSlotToContainer(new Slot(tile, 2, 116, 35));
 		int var3;
 		for (var3 = 0; var3 < 3; ++var3) {
 			for (int var4 = 0; var4 < 9; ++var4) {
@@ -44,16 +43,12 @@ public class ContainerCoffeeBaker extends Container {
 	public void addCraftingToCrafters(ICrafting crafting) {
 		super.addCraftingToCrafters(crafting);
 		crafting.sendProgressBarUpdate(this, 0, this.tile.progressTime);
-		crafting.sendProgressBarUpdate(this, 1, this.tile.temperature);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int index, int value) {
 		if (index == 0) {
 			this.tile.progressTime = value;
-		}
-		if (index == 1) {
-			this.tile.temperature = value;
 		}
 	}
 
@@ -67,13 +62,8 @@ public class ContainerCoffeeBaker extends Container {
 			if (this.lastProgressTime != this.tile.progressTime) {
 				var2.sendProgressBarUpdate(this, 0, this.tile.progressTime);
 			}
-
-			if (this.lastTemperature != this.tile.temperature) {
-				var2.sendProgressBarUpdate(this, 1, this.tile.temperature);
-			}
 		}
 		this.lastProgressTime = this.tile.progressTime;
-		this.lastTemperature = this.tile.temperature;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package kaaass.coffeecraft.init;
 
 import kaaass.coffeecraft.block.BlockCoffeeBaker;
+import kaaass.coffeecraft.block.BlockCoffeeGrinder;
 import kaaass.coffeecraft.block.BlockCoffeeTreeFruit;
 import kaaass.coffeecraft.block.BlockCoffeeTreeLeave;
 import kaaass.coffeecraft.block.BlockCoffeeTreeSapling;
@@ -14,6 +15,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Blocks extends IInits{
 	public static Block coffeeBaker;
+	public static Block coffeeGrinder;
 	
 	public static Block coffeeTreeFruitBlock;
 	public static Block coffeeTreeLeaveBlock;
@@ -27,6 +29,7 @@ public class Blocks extends IInits{
 	@Override
 	public void preLoad() {
 		coffeeBaker = new BlockCoffeeBaker();
+		coffeeGrinder = new BlockCoffeeGrinder();
 		
 		coffeeTreeFruitBlock = new BlockCoffeeTreeFruit();
 		coffeeTreeLeaveBlock = new BlockCoffeeTreeLeave();
@@ -34,6 +37,7 @@ public class Blocks extends IInits{
 		factorOre = new BlockFactorOre();
 		
 		GameRegistry.registerBlock(coffeeBaker, "coffeeBaker");
+		GameRegistry.registerBlock(coffeeGrinder, "coffeeGrinder");
 		
 		GameRegistry.registerBlock(coffeeTreeFruitBlock, "coffeeTreeFruitBlock");
 		GameRegistry.registerBlock(coffeeTreeLeaveBlock, "coffeeTreeLeaveBlock");

@@ -2,6 +2,7 @@ package kaaass.coffeecraft.gui;
 
 import kaaass.coffeecraft.init.Gui;
 import kaaass.coffeecraft.tileentity.TileEntityCoffeeBaker;
+import kaaass.coffeecraft.tileentity.TileEntityCoffeeGrinder;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -13,6 +14,8 @@ public class GuiHandler implements IGuiHandler {
 		switch(ID) {
 			case Gui.COFFEE_BAKER_ID:
 				return new GuiCoffeeBaker(player.inventory, (TileEntityCoffeeBaker)player.worldObj.getTileEntity(x, y, z));
+			case Gui.COFFEE_GRINDER_ID:
+				return new GuiCoffeeGrinder(player.inventory, (TileEntityCoffeeGrinder)player.worldObj.getTileEntity(x, y, z));
 		}
 		return null;
 	}
@@ -22,6 +25,8 @@ public class GuiHandler implements IGuiHandler {
 		switch(ID){
 			case Gui.COFFEE_BAKER_ID:
 				return new ContainerCoffeeBaker(player.inventory, (TileEntityCoffeeBaker)player.worldObj.getTileEntity(x, y, z));
+			case Gui.COFFEE_GRINDER_ID:
+				return new ContainerCoffeeGrinder(player.inventory, (TileEntityCoffeeGrinder)player.worldObj.getTileEntity(x, y, z));
 	    }
 	    return null;
 	}

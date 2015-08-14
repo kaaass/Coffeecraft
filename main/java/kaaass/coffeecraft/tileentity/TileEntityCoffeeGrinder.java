@@ -21,10 +21,9 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
+public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 	private ItemStack stack[] = new ItemStack[3];
 	public int progressTime = 0;
-	public int temperature = 900; //*10
 
 	@Override
 	public void updateEntity() {
@@ -32,61 +31,51 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 		World world = this.worldObj;
 		if (!world.isRemote) {
 			ItemStack inputItem = getStackInSlot(0);
-			ItemStack coal = getStackInSlot(1);
+			ItemStack spice = getStackInSlot(1);
 			ItemStack outputItem = getStackInSlot(2);
-			Block a = world.getBlock(xCoord, yCoord - 1, zCoord);
-			// temperature
-			if(coal != null && a == Blocks.fire){
-				this.temperature += getItemTem(coal);
-				if (temperature < 900) {
-					temperature = 900;
-				}else if(temperature > 5000){
-					EntityTNTPrimed localEntityTNTPrimed = new EntityTNTPrimed(world, xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, null);
-					world.spawnEntityInWorld(localEntityTNTPrimed);
-					world.playSoundAtEntity(localEntityTNTPrimed, "game.tnt.primed", 1.0F, 1.0F);
-					world.setBlockToAir(xCoord, yCoord, zCoord);
-				}else if(getItemTem(coal) != 0){
-					if(coal.stackSize == 1){
-						coal = null;
-					}else{
-						--coal.stackSize;
-					}
-				}
-				setInventorySlotContents(1, coal);
-			}
 			// progress
-			if (inputItem != null && a == Blocks.fire) {
+			if (inputItem != null && world.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)) {
 				if (outputItem == null) {
-					if((inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() <= 2) || inputItem.getItem() == Items.coffeeTreeFruit){
+					if((inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() == 3) || (inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() != 15)){
 						this.progressTime++;
 					}
-					if (this.progressTime == 1000) {
+					if (this.progressTime == 600) {
 						this.progressTime = 0;
-						if(inputItem.getItem() == Items.coffeeTreeFruit){
-							if(ItemCoffeeBean.canBake(this.temperature / 10, -1)){
-								outputItem = new ItemStack(Items.coffeeBean, 1, 0);
-								this.temperature -= world.rand.nextInt(3) * 10;
+						if(inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() == 3){
+							if(inputItem.stackSize >= 3){
+								if(inputItem.stackSize == 3){
+									inputItem = null;
+								}else{
+									inputItem.stackSize -= 3;
+								}
+								outputItem = new ItemStack(Items.coffeePowder, 1);
 							}else{
-								outputItem = new ItemStack(Items.coffeeBean, 1, 4);
-								this.temperature -= world.rand.nextInt(3) * 10;
-							}
-							if(inputItem.stackSize == 1){
+								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
 								inputItem = null;
-							}else{
-								inputItem.stackSize--;
 							}
-						}else if(inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() <= 2){
-							if(ItemCoffeeBean.canBake(this.temperature / 10, inputItem.getItemDamage())){
-								outputItem = new ItemStack(Items.coffeeBean, 1, inputItem.getItemDamage() + 1);
-								this.temperature -= world.rand.nextInt(3) * 10;
+						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 0){
+							if(inputItem.stackSize >= 5){
+								if(inputItem.stackSize == 5){
+									inputItem = null;
+								}else{
+									inputItem.stackSize -= 5;
+								}
+								outputItem = new ItemStack(Item.getItemById(287), 3 + world.rand.nextInt(8));
 							}else{
-								outputItem = new ItemStack(Items.coffeeBean, 1, 4);
-								this.temperature -= world.rand.nextInt(3) * 10;
-							}
-							if(inputItem.stackSize == 1){
+								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
 								inputItem = null;
+							}
+						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() != 15){
+							if(inputItem.stackSize >= 2){
+								if(inputItem.stackSize == 2){
+									inputItem = null;
+								}else{
+									inputItem.stackSize -= 2;
+								}
+								outputItem = new ItemStack(Item.getItemById(351), 3 + world.rand.nextInt(13), 15 - inputItem.getItemDamage());
 							}else{
-								inputItem.stackSize--;
+								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
+								inputItem = null;
 							}
 						}
 					}
@@ -94,33 +83,34 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 					if(allowProgress(inputItem, outputItem)){
 						this.progressTime++;
 					}
-					if (this.progressTime == 1000) {
+					if (this.progressTime == 600) {
 						this.progressTime = 0;
-						if(inputItem.getItem() == Items.coffeeTreeFruit){
-							if(ItemCoffeeBean.canBake(this.temperature / 10, -1)){
-								outputItem = new ItemStack(Items.coffeeBean, ++outputItem.stackSize, 0);
-								this.temperature -= world.rand.nextInt(3) * 10;
-							}else{
-								outputItem = new ItemStack(Items.coffeeBean, ++outputItem.stackSize, 4);
-								this.temperature -= world.rand.nextInt(3) * 10;
+						if(inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() == 3){
+							if(inputItem.stackSize >= 3){
+								if(inputItem.stackSize == 3){
+									inputItem = null;
+								}else{
+									inputItem.stackSize -= 3;
+								}
+								outputItem.stackSize++;
 							}
-							if(inputItem.stackSize == 1){
-								inputItem = null;
-							}else{
-								inputItem.stackSize--;
+						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 0){
+							if(inputItem.stackSize >= 5){
+								if(inputItem.stackSize == 5){
+									inputItem = null;
+								}else{
+									inputItem.stackSize -= 5;
+								}
+								outputItem.stackSize += 3 + world.rand.nextInt(8);
 							}
-						}else if(inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() <= 2 && outputItem.getItemDamage() - inputItem.getItemDamage() == 1){
-							if(ItemCoffeeBean.canBake(this.temperature / 10, inputItem.getItemDamage())){
-								outputItem = new ItemStack(Items.coffeeBean, ++outputItem.stackSize, inputItem.getItemDamage() + 1);
-								this.temperature -= world.rand.nextInt(3) * 10;
-							}else{
-								outputItem = new ItemStack(Items.coffeeBean, ++outputItem.stackSize, 4);
-								this.temperature -= world.rand.nextInt(3) * 10;
-							}
-							if(inputItem.stackSize == 1){
-								inputItem = null;
-							}else{
-								inputItem.stackSize--;
+						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() != 15){
+							if(inputItem.stackSize >= 2){
+								if(inputItem.stackSize == 2){
+									inputItem = null;
+								}else{
+									inputItem.stackSize -= 2;
+								}
+								outputItem.stackSize += 3 + world.rand.nextInt(13);
 							}
 						}
 					}
@@ -134,15 +124,17 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 	}
 	
 	private boolean allowProgress(ItemStack input, ItemStack output){
-		if(input.getItem() == Items.coffeeTreeFruit){
-			return output.getItem() == Items.coffeeBean && output.getItemDamage() == 0;
-		}else if(input.getItem() == Items.coffeeBean && input.getItemDamage() <= 2){
-			return output.getItem() == Items.coffeeBean && output.getItemDamage() - input.getItemDamage() == 1;
+		if(input.getItem() == Items.coffeeBean && input.getItemDamage() == 3){
+			return output.getItem() == Items.coffeePowder;
+		}else if(input.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && input.getItemDamage() == 0){
+			return output.getItem() == Item.getItemById(287);
+		}else if(input.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && input.getItemDamage() != 15){
+			return output.getItem() == Item.getItemById(351) && input.getItemDamage() + output.getItemDamage() == 15;
 		}else{
 			return false;
 		}
 	}
-
+	
 	@Override
 	public ItemStack getStackInSlotOnClosing(int var1) {
 		return null;
@@ -230,13 +222,11 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 			}
 		}
 		this.progressTime = par1NBTTagCompound.getShort("progressTime");
-		this.temperature = par1NBTTagCompound.getShort("temperature");
 	}
 
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
 		super.writeToNBT(par1NBTTagCompound);
 		par1NBTTagCompound.setShort("progressTime", (short) this.progressTime);
-		par1NBTTagCompound.setShort("temperature", (short) this.temperature);
 		NBTTagList var2 = new NBTTagList();
 		for (int var3 = 0; var3 < this.stack.length; ++var3) {
 			if (this.stack[var3] != null) {
