@@ -4,6 +4,7 @@ import kaaass.coffeecraft.item.ItemAntiCaffeine;
 import kaaass.coffeecraft.item.ItemAntiCaffeineTablet;
 import kaaass.coffeecraft.item.ItemCaffeine;
 import kaaass.coffeecraft.item.ItemCaffeineTablet;
+import kaaass.coffeecraft.item.ItemCocoaPowder;
 import kaaass.coffeecraft.item.ItemCoffeeBean;
 import kaaass.coffeecraft.item.ItemCoffeeCoin;
 import kaaass.coffeecraft.item.ItemCoffeeCore;
@@ -27,6 +28,7 @@ public class Items extends IInits{
 	public static Item coffeeTreeSapling;
 	public static Item coffeeBean;
 	public static Item coffeePowder;
+	public static Item cocoaPowder;
 	public static Item coffeePill;
 	public static Item coffeeCoin;
 	public static Item coffeeCore;
@@ -51,6 +53,7 @@ public class Items extends IInits{
 		coffeeTreeSapling = new ItemCoffeeTreeSapling();
 		coffeeBean = new ItemCoffeeBean();
 		coffeePowder = new ItemCoffeePowder();
+		cocoaPowder = new ItemCocoaPowder();
 		coffeePill = new ItemCoffeePill();
 		coffeeCoin = new ItemCoffeeCoin();
 		coffeeCore = new ItemCoffeeCore();
@@ -70,6 +73,7 @@ public class Items extends IInits{
 		GameRegistry.registerItem(coffeeTreeSapling, "coffeeTreeSapling");
 		GameRegistry.registerItem(coffeeBean, "coffeeBean");
 		GameRegistry.registerItem(coffeePowder, "coffeePowder");
+		GameRegistry.registerItem(cocoaPowder, "cocoaPowder");
 		GameRegistry.registerItem(coffeePill, "coffeePill");
 		GameRegistry.registerItem(coffeeCoin, "coffeeCoin");
 		GameRegistry.registerItem(coffeeCore, "coffeeCore");

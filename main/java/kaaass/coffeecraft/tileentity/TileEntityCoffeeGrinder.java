@@ -65,6 +65,18 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
 								inputItem = null;
 							}
+						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 3){
+							if(inputItem.stackSize >= 3){
+								if(inputItem.stackSize == 3){
+									inputItem = null;
+								}else{
+									inputItem.stackSize -= 3;
+								}
+								outputItem = new ItemStack(Items.cocoaPowder, 2);
+							}else{
+								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
+								inputItem = null;
+							}
 						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() != 15){
 							if(inputItem.stackSize >= 2){
 								if(inputItem.stackSize == 2){
@@ -103,6 +115,15 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 								}
 								outputItem.stackSize += 3 + world.rand.nextInt(8);
 							}
+						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 3){
+							if(inputItem.stackSize >= 3){
+								if(inputItem.stackSize == 3){
+									inputItem = null;
+								}else{
+									inputItem.stackSize -= 3;
+								}
+								outputItem.stackSize += 2;
+							}
 						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() != 15){
 							if(inputItem.stackSize >= 2){
 								if(inputItem.stackSize == 2){
@@ -128,6 +149,8 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 			return output.getItem() == Items.coffeePowder;
 		}else if(input.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && input.getItemDamage() == 0){
 			return output.getItem() == Item.getItemById(287);
+		}else if(input.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && input.getItemDamage() == 3){
+			return output.getItem() == Items.cocoaPowder;
 		}else if(input.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && input.getItemDamage() != 15){
 			return output.getItem() == Item.getItemById(351) && input.getItemDamage() + output.getItemDamage() == 15;
 		}else{

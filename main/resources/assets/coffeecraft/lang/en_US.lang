@@ -12,6 +12,7 @@ item.coffeeBean.dried.name=Coffee Bean(Dried)
 item.coffeeBean.baked.name=Coffee Bean(Baked)
 item.coffeeBean.burnt.name=Burnt Coffee Bean
 item.coffeePowder.name=Coffee Powder
+item.cocoaPowder.name=Cocoa Powder
 item.coffeePill.name=Coffee Pill
 item.coffeeCoin.name=Coffee Coin
 item.coffeeCore.name=Coffee Core
