@@ -25,7 +25,7 @@ public class GuiCoffeeBaker extends GuiContainer {
 		 super.drawGuiContainerForegroundLayer(arg0, arg1);
 		 fontRendererObj.drawString(StatCollector.translateToLocal("container.coffeeBaker"), 65, 6, 4210752);
 		 fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 94, 4210752);
-		 String str = ((this.tile.temperature + this.tile.getWorldObj().rand.nextInt(5)) / 10 + "°„C");
+		 String str = ((Math.floor(this.tile.temperature / 10) + this.tile.getWorldObj().rand.nextInt(5) / 10) + "°„C");
 		 int a = this.fontRendererObj.getStringWidth(str);
 		 fontRendererObj.drawString(str, 63 - a / 2, 66, 4210752);
 	}

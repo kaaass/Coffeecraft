@@ -6,6 +6,7 @@ import kaaass.coffeecraft.init.Items;
 import kaaass.coffeecraft.item.ItemCoffeeBean;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
@@ -24,7 +25,6 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 	private ItemStack stack[] = new ItemStack[3];
 	public int progressTime = 0;
 	public int temperature = 900; //*10
-	private int timer = 0;// get coal per 20 game tick
 
 	@Override
 	public void updateEntity() {
@@ -34,22 +34,28 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 			ItemStack inputItem = getStackInSlot(0);
 			ItemStack coal = getStackInSlot(1);
 			ItemStack outputItem = getStackInSlot(2);
+			Block a = world.getBlock(xCoord, yCoord - 1, zCoord);
 			// temperature
-			timer++;
-			if(timer == 20){
-				timer = 0;
-				if(coal != null){
-					this.temperature += getItemTem(coal);
-					if(coal.stackSize == 0){
+			if(coal != null && a == Blocks.fire){
+				this.temperature += getItemTem(coal);
+				if (temperature < 900) {
+					temperature = 900;
+				}else if(temperature > 5000){
+					EntityTNTPrimed localEntityTNTPrimed = new EntityTNTPrimed(world, xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, null);
+					world.spawnEntityInWorld(localEntityTNTPrimed);
+					world.playSoundAtEntity(localEntityTNTPrimed, "game.tnt.primed", 1.0F, 1.0F);
+					world.setBlockToAir(xCoord, yCoord, zCoord);
+				}else if(getItemTem(coal) != 0){
+					if(coal.stackSize == 1){
 						coal = null;
 					}else{
 						--coal.stackSize;
 					}
-					setInventorySlotContents(1, coal);
 				}
+				setInventorySlotContents(1, coal);
 			}
 			// progress
-			if (inputItem != null) {
+			if (inputItem != null && a == Blocks.fire) {
 				if (outputItem == null) {
 					if(inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() <= 2 || inputItem.getItem() == Items.coffeeTreeFruit){
 						this.progressTime++;

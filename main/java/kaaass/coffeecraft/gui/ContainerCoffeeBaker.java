@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 public class ContainerCoffeeBaker extends Container {
 	private TileEntityCoffeeBaker tile;
 	private int lastProgressTime = 0;
-	private int lastTemperature = 900;
+	private int lastTemperature = 0;
 
 	public ContainerCoffeeBaker(InventoryPlayer inventory, TileEntityCoffeeBaker tile) {
 		this.tile = tile;

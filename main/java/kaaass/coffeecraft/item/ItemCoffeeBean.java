@@ -39,6 +39,9 @@ public class ItemCoffeeBean extends ItemFood {
 	    	if(stack.getItemDamage() <= 1 && world.rand.nextInt(4) == 0){
 	    		player.addPotionEffect(new PotionEffect(Potion.hunger.id, 200, 0));
 	    	}
+	    	if(stack.getItemDamage() == 4){
+	    		player.addPotionEffect(new PotionEffect(Potion.confusion.id, 100, 0));
+	    	}
 	    }
 	}
 	
@@ -74,7 +77,7 @@ public class ItemCoffeeBean extends ItemFood {
 	
 	public static boolean canBake(double tem, int damage){
 		switch(damage){
-			case -1: //treefruit
+			case -1: //tree fruit
 				return tem >= 135 && tem <= 145;
 			case 0:
 				return tem >= 150 && tem <= 180;

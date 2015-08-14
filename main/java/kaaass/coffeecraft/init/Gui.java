@@ -7,7 +7,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Gui extends IInits{
-	public static final int COFFEE_BAKER_ID = 12450;
+	public static final int COFFEE_BAKER_ID = 124501;
 	
 	public Gui(){
 		super("Gui");

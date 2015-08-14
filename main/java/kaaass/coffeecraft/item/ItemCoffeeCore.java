@@ -11,6 +11,7 @@ public class ItemCoffeeCore extends Item{
 		setTextureName(CoffeecraftMain.MODID+":coffeeCore");
 		setCreativeTab(CoffeecraftMain.creativeTab);
 		setUnlocalizedName("coffeeCore");
+		setMaxStackSize(1);
 	}
 	
 	@SideOnly(Side.CLIENT)

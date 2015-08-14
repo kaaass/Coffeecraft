@@ -15,6 +15,7 @@ public class ItemCoffeePill extends ItemFood {
 		setTextureName(CoffeecraftMain.MODID+":coffeePill");
 		setCreativeTab(CoffeecraftMain.creativeTab);
 		setUnlocalizedName("coffeePill");
+		setMaxStackSize(16);
 	}
 	
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player){

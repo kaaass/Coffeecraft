@@ -26,6 +26,7 @@ public class BlockCoffeeBaker extends BlockContainer {
 	
 	public BlockCoffeeBaker(){
 		super(Material.rock);
+		setHardness(3.0F);
 		setCreativeTab(CoffeecraftMain.creativeTab);
 		setBlockName("coffeeBaker");
 		setStepSound(soundTypeStone);

@@ -3,6 +3,7 @@ package kaaass.coffeecraft.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -63,6 +64,13 @@ public class Crafting extends IInits {
 			"ABA",
 			"AAA",
 			'A', Item.getItemById(280), 'B', Items.filterNet});
+		GameRegistry.addRecipe(new ItemStack(Blocks.coffeeBaker, 1), new Object[]{
+			"DAD", 
+			"ABA",
+			"CEC",
+			'A', Item.getItemById(265), 'B', Items.coffeeCore, 
+			'C', Block.getBlockById(4), 'D', Block.getBlockById(49),
+			'E', Item.getItemById(326)});
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.extractionFactor, 1, 1), new Object[]{new ItemStack(Items.extractionFactor, 1, 0), Item.getItemById(376)});
 		
