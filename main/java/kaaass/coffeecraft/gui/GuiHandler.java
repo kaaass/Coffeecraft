@@ -3,6 +3,7 @@ package kaaass.coffeecraft.gui;
 import kaaass.coffeecraft.init.Gui;
 import kaaass.coffeecraft.tileentity.TileEntityCoffeeBaker;
 import kaaass.coffeecraft.tileentity.TileEntityCoffeeGrinder;
+import kaaass.coffeecraft.tileentity.TileEntityExtractingMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -16,6 +17,8 @@ public class GuiHandler implements IGuiHandler {
 				return new GuiCoffeeBaker(player.inventory, (TileEntityCoffeeBaker)player.worldObj.getTileEntity(x, y, z));
 			case Gui.COFFEE_GRINDER_ID:
 				return new GuiCoffeeGrinder(player.inventory, (TileEntityCoffeeGrinder)player.worldObj.getTileEntity(x, y, z));
+			case Gui.COFFEE_EXTRACT_ID:
+				return new GuiExtractingMachine(player.inventory, (TileEntityExtractingMachine)player.worldObj.getTileEntity(x, y, z));
 		}
 		return null;
 	}
@@ -27,6 +30,8 @@ public class GuiHandler implements IGuiHandler {
 				return new ContainerCoffeeBaker(player.inventory, (TileEntityCoffeeBaker)player.worldObj.getTileEntity(x, y, z));
 			case Gui.COFFEE_GRINDER_ID:
 				return new ContainerCoffeeGrinder(player.inventory, (TileEntityCoffeeGrinder)player.worldObj.getTileEntity(x, y, z));
+			case Gui.COFFEE_EXTRACT_ID:
+				return new ContainerExtractingMachine(player.inventory, (TileEntityExtractingMachine)player.worldObj.getTileEntity(x, y, z));
 	    }
 	    return null;
 	}

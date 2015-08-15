@@ -5,6 +5,7 @@ import kaaass.coffeecraft.block.BlockCoffeeGrinder;
 import kaaass.coffeecraft.block.BlockCoffeeTreeFruit;
 import kaaass.coffeecraft.block.BlockCoffeeTreeLeave;
 import kaaass.coffeecraft.block.BlockCoffeeTreeSapling;
+import kaaass.coffeecraft.block.BlockExtractingMachine;
 import kaaass.coffeecraft.block.BlockFactorOre;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -16,6 +17,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Blocks extends IInits{
 	public static Block coffeeBaker;
 	public static Block coffeeGrinder;
+	public static Block extractingMachine;
 	
 	public static Block coffeeTreeFruitBlock;
 	public static Block coffeeTreeLeaveBlock;
@@ -30,6 +32,7 @@ public class Blocks extends IInits{
 	public void preLoad() {
 		coffeeBaker = new BlockCoffeeBaker();
 		coffeeGrinder = new BlockCoffeeGrinder();
+		extractingMachine = new BlockExtractingMachine();
 		
 		coffeeTreeFruitBlock = new BlockCoffeeTreeFruit();
 		coffeeTreeLeaveBlock = new BlockCoffeeTreeLeave();
@@ -38,6 +41,7 @@ public class Blocks extends IInits{
 		
 		GameRegistry.registerBlock(coffeeBaker, "coffeeBaker");
 		GameRegistry.registerBlock(coffeeGrinder, "coffeeGrinder");
+		GameRegistry.registerBlock(extractingMachine, "extractingMachine");
 		
 		GameRegistry.registerBlock(coffeeTreeFruitBlock, "coffeeTreeFruitBlock");
 		GameRegistry.registerBlock(coffeeTreeLeaveBlock, "coffeeTreeLeaveBlock");

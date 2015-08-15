@@ -3,6 +3,7 @@ package kaaass.coffeecraft.item;
 import java.util.List;
 
 import kaaass.coffeecraft.CoffeecraftMain;
+import kaaass.coffeecraft.init.Items;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -50,5 +51,39 @@ public class ItemExtractionFactor extends Item {
 	public IIcon getIconFromDamage(int damage){
 	    int a = MathHelper.clamp_int(damage, 0, name.length - 1);
 	    return iconArray[a];
+	}
+	
+	public static boolean canInputCraft(int damage, ItemStack input){
+		switch(damage){
+			case 0:
+				return false;
+			case 1:
+				return false;
+			case 2:
+				return input.getItem() == Item.getItemById(319) || input.getItem() == Item.getItemById(363) || input.getItem() == Item.getItemById(365);
+			case 3:
+				return input.getItem() == Items.coffeeBean && input.getItemDamage() == 3;
+			case 4:
+				return input.getItem() == Items.caffeine;
+			default:
+				return false;
+		}
+	}
+	
+	public static boolean canInputOut(int damage, ItemStack output){
+		switch(damage){
+			case 0:
+				return false;
+			case 1:
+				return false;
+			case 2:
+				return output.getItem() == Items.fat;
+			case 3:
+				return output.getItem() == Items.caffeine;
+			case 4:
+				return output.getItem() == Items.antiCaffeine;
+			default:
+				return false;
+		}
 	}
 }

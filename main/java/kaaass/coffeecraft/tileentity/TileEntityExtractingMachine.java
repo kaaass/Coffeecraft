@@ -4,6 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import kaaass.coffeecraft.init.Crafting;
 import kaaass.coffeecraft.init.Items;
 import kaaass.coffeecraft.item.ItemCoffeeBean;
+import kaaass.coffeecraft.item.ItemExtractionFactor;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityTNTPrimed;
@@ -21,7 +22,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
+public class TileEntityExtractingMachine extends TileEntity implements IInventory {
 	private ItemStack stack[] = new ItemStack[3];
 	public int progressTime = 0;
 
@@ -31,112 +32,69 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 		World world = this.worldObj;
 		if (!world.isRemote) {
 			ItemStack inputItem = getStackInSlot(0);
-			ItemStack spice = getStackInSlot(1);
+			ItemStack factor = getStackInSlot(1);
 			ItemStack outputItem = getStackInSlot(2);
 			// progress
-			if (inputItem != null && world.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord) && world.getBlock(xCoord, yCoord + 1, zCoord) == Blocks.anvil) {
+			if (inputItem != null && factor != null && world.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)) {
 				if (outputItem == null) {
-					if((inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() == 3) || (inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() != 15)){
+					if(allowProgress(inputItem, factor, null)){
 						this.progressTime++;
 					}
-					if (this.progressTime == 600) {
+					if (this.progressTime == 800) {
 						this.progressTime = 0;
-						if(inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() == 3){
-							if(inputItem.stackSize >= 3){
-								if(inputItem.stackSize == 3){
-									inputItem = null;
-								}else{
-									inputItem.stackSize -= 3;
-								}
-								outputItem = new ItemStack(Items.coffeePowder, 1);
-							}else{
-								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
-								inputItem = null;
-							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 0){
-							if(inputItem.stackSize >= 5){
-								if(inputItem.stackSize == 5){
-									inputItem = null;
-								}else{
-									inputItem.stackSize -= 5;
-								}
-								outputItem = new ItemStack(Item.getItemById(287), 3 + world.rand.nextInt(8));
-							}else{
-								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
-								inputItem = null;
-							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 3){
-							if(inputItem.stackSize >= 3){
-								if(inputItem.stackSize == 3){
-									inputItem = null;
-								}else{
-									inputItem.stackSize -= 3;
-								}
-								outputItem = new ItemStack(Items.cocoaPowder, 2);
-							}else{
-								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
-								inputItem = null;
-							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() != 15){
-							if(inputItem.stackSize >= 2){
-								if(inputItem.stackSize == 2){
-									inputItem = null;
-								}else{
-									inputItem.stackSize -= 2;
-								}
-								outputItem = new ItemStack(Item.getItemById(351), 3 + world.rand.nextInt(13), 15 - inputItem.getItemDamage());
-							}else{
-								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
-								inputItem = null;
-							}
+						switch(factor.getItemDamage()){
+							case 2:
+								outputItem = new ItemStack(Items.fat, 3);
+								break;
+							case 3:
+								outputItem = new ItemStack(Items.caffeine, 2 + world.rand.nextInt(7));
+								break;
+							case 4:
+								outputItem = new ItemStack(Items.antiCaffeine, 1);
+								break;
+						}
+						if(inputItem.stackSize == 1){
+							inputItem = null;
+						}else{
+							inputItem.stackSize--;
+						}
+						if(factor.stackSize == 1){
+							factor = null;
+						}else{
+							factor.stackSize--;
 						}
 					}
 				} else {
-					if(allowProgress(inputItem, outputItem)){
+					if(allowProgress(inputItem, factor, outputItem)){
 						this.progressTime++;
 					}
-					if (this.progressTime == 600) {
+					if (this.progressTime == 800) {
 						this.progressTime = 0;
-						if(inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() == 3){
-							if(inputItem.stackSize >= 3){
-								if(inputItem.stackSize == 3){
-									inputItem = null;
-								}else{
-									inputItem.stackSize -= 3;
-								}
-								outputItem.stackSize++;
-							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 0){
-							if(inputItem.stackSize >= 5){
-								if(inputItem.stackSize == 5){
-									inputItem = null;
-								}else{
-									inputItem.stackSize -= 5;
-								}
-								outputItem.stackSize += 3 + world.rand.nextInt(8);
-							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 3){
-							if(inputItem.stackSize >= 3){
-								if(inputItem.stackSize == 3){
-									inputItem = null;
-								}else{
-									inputItem.stackSize -= 3;
-								}
-								outputItem.stackSize += 2;
-							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() != 15){
-							if(inputItem.stackSize >= 2){
-								if(inputItem.stackSize == 2){
-									inputItem = null;
-								}else{
-									inputItem.stackSize -= 2;
-								}
-								outputItem.stackSize += 3 + world.rand.nextInt(13);
-							}
+						switch(factor.getItemDamage()){
+							case 2:
+								outputItem.stackSize += 3;
+								break;
+							case 3:
+								outputItem.stackSize += 2 + world.rand.nextInt(7);
+								break;
+							case 4:
+								outputItem.stackSize += 1;
+								break;
+						}
+						if(inputItem.stackSize == 1){
+							inputItem = null;
+						}else{
+							inputItem.stackSize--;
+						}
+						if(factor.stackSize == 1){
+							factor = null;
+						}else{
+							factor.stackSize--;
 						}
 					}
 				}
 				setInventorySlotContents(0, inputItem);
+				setInventorySlotContents(1, factor);
 				setInventorySlotContents(2, outputItem);
 			} else {
 				this.progressTime = 0;
@@ -144,17 +102,11 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 		}
 	}
 	
-	private boolean allowProgress(ItemStack input, ItemStack output){
-		if(input.getItem() == Items.coffeeBean && input.getItemDamage() == 3){
-			return output.getItem() == Items.coffeePowder;
-		}else if(input.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && input.getItemDamage() == 0){
-			return output.getItem() == Item.getItemById(287);
-		}else if(input.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && input.getItemDamage() == 3){
-			return output.getItem() == Items.cocoaPowder;
-		}else if(input.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && input.getItemDamage() != 15){
-			return output.getItem() == Item.getItemById(351) && input.getItemDamage() + output.getItemDamage() == 15;
+	private boolean allowProgress(ItemStack input, ItemStack factor, ItemStack output){
+		if(output == null){
+			return factor.getItemDamage() >= 2 && ItemExtractionFactor.canInputCraft(factor.getItemDamage(), input);
 		}else{
-			return false;
+			return factor.getItemDamage() >= 2 && ItemExtractionFactor.canInputCraft(factor.getItemDamage(), input) && ItemExtractionFactor.canInputOut(factor.getItemDamage(), output);
 		}
 	}
 	

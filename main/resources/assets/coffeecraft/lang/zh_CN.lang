@@ -2,6 +2,7 @@ itemGroup.coffeecraft=咖啡工艺
 
 tile.coffeeBaker.name=咖啡烘焙机
 tile.coffeeGrinder.name=咖啡研磨机
+tile.extractingMachine.name=提取机
 tile.factorOre.name=因子矿
 
 item.coffeeTreeFruit.name=咖啡树果
@@ -33,6 +34,7 @@ item.mixedPowder.name=混合粉末
 container.inventory=背包
 container.coffeeBaker=咖啡烘焙机
 container.coffeeGrinder=咖啡研磨机
+container.extractingMachine=提取机
 
 coffeecraft.chat.tomuchcaffeine=现在你不能睡觉，你太兴奋了。说不定你摄入了过多的咖啡因。
 
