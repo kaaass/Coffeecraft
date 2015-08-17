@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 	private ItemStack stack[] = new ItemStack[3];
 	public int progressTime = 0;
-	public int temperature = 900; //*10
+	public int temperature = 900; // *10
 
 	@Override
 	public void updateEntity() {
@@ -36,19 +36,19 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 			ItemStack outputItem = getStackInSlot(2);
 			Block a = world.getBlock(xCoord, yCoord - 1, zCoord);
 			// temperature
-			if(coal != null && a == Blocks.fire){
+			if (coal != null && a == Blocks.fire) {
 				this.temperature += getItemTem(coal);
 				if (temperature < 900) {
 					temperature = 900;
-				}else if(temperature > 5000){
+				} else if (temperature > 5000) {
 					EntityTNTPrimed localEntityTNTPrimed = new EntityTNTPrimed(world, xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, null);
 					world.spawnEntityInWorld(localEntityTNTPrimed);
 					world.playSoundAtEntity(localEntityTNTPrimed, "game.tnt.primed", 1.0F, 1.0F);
 					world.setBlockToAir(xCoord, yCoord, zCoord);
-				}else if(getItemTem(coal) != 0){
-					if(coal.stackSize == 1){
+				} else if (getItemTem(coal) != 0) {
+					if (coal.stackSize == 1) {
 						coal = null;
-					}else{
+					} else {
 						--coal.stackSize;
 					}
 				}
@@ -57,69 +57,96 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 			// progress
 			if (inputItem != null && a == Blocks.fire) {
 				if (outputItem == null) {
-					if((inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() <= 2) || inputItem.getItem() == Items.coffeeTreeFruit){
+					if ((inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() <= 2)
+							|| inputItem.getItem() == Items.coffeeTreeFruit
+							|| (inputItem.getItem() == Items.dirtIngot && inputItem.getItemDamage() == 0)) {
 						this.progressTime++;
 					}
 					if (this.progressTime == 1000) {
 						this.progressTime = 0;
-						if(inputItem.getItem() == Items.coffeeTreeFruit){
-							if(ItemCoffeeBean.canBake(this.temperature / 10, -1)){
+						if (inputItem.getItem() == Items.coffeeTreeFruit) {
+							if (ItemCoffeeBean.canBake(this.temperature / 10, -1)) {
 								outputItem = new ItemStack(Items.coffeeBean, 1, 0);
 								this.temperature -= world.rand.nextInt(3) * 10;
-							}else{
+							} else {
 								outputItem = new ItemStack(Items.coffeeBean, 1, 4);
 								this.temperature -= world.rand.nextInt(3) * 10;
 							}
-							if(inputItem.stackSize == 1){
+							if (inputItem.stackSize == 1) {
 								inputItem = null;
-							}else{
+							} else {
 								inputItem.stackSize--;
 							}
-						}else if(inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() <= 2){
-							if(ItemCoffeeBean.canBake(this.temperature / 10, inputItem.getItemDamage())){
+						} else if (inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() <= 2) {
+							if (ItemCoffeeBean.canBake(this.temperature / 10, inputItem.getItemDamage())) {
 								outputItem = new ItemStack(Items.coffeeBean, 1, inputItem.getItemDamage() + 1);
 								this.temperature -= world.rand.nextInt(3) * 10;
-							}else{
+							} else {
 								outputItem = new ItemStack(Items.coffeeBean, 1, 4);
 								this.temperature -= world.rand.nextInt(3) * 10;
 							}
-							if(inputItem.stackSize == 1){
+							if (inputItem.stackSize == 1) {
 								inputItem = null;
-							}else{
+							} else {
+								inputItem.stackSize--;
+							}
+						} else if (inputItem.getItem() == Items.dirtIngot && inputItem.getItemDamage() == 0) {
+							if (this.temperature >= 400) {
+								outputItem = new ItemStack(Items.dirtIngot, 1, 1);
+								this.temperature -= world.rand.nextInt(3) * 10;
+							} else {
+								this.temperature -= world.rand.nextInt(3) * 10;
+							}
+							if (inputItem.stackSize == 1) {
+								inputItem = null;
+							} else {
 								inputItem.stackSize--;
 							}
 						}
 					}
 				} else {
-					if(allowProgress(inputItem, outputItem)){
+					if (allowProgress(inputItem, outputItem)) {
 						this.progressTime++;
 					}
 					if (this.progressTime == 1000) {
 						this.progressTime = 0;
-						if(inputItem.getItem() == Items.coffeeTreeFruit){
-							if(ItemCoffeeBean.canBake(this.temperature / 10, -1)){
+						if (inputItem.getItem() == Items.coffeeTreeFruit) {
+							if (ItemCoffeeBean.canBake(this.temperature / 10, -1)) {
 								outputItem = new ItemStack(Items.coffeeBean, ++outputItem.stackSize, 0);
 								this.temperature -= world.rand.nextInt(3) * 10;
-							}else{
+							} else {
 								outputItem = new ItemStack(Items.coffeeBean, ++outputItem.stackSize, 4);
 								this.temperature -= world.rand.nextInt(3) * 10;
 							}
-							if(inputItem.stackSize == 1){
+							if (inputItem.stackSize == 1) {
 								inputItem = null;
-							}else{
+							} else {
 								inputItem.stackSize--;
 							}
-						}else if(inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() <= 2 && outputItem.getItemDamage() - inputItem.getItemDamage() == 1){
-							if(ItemCoffeeBean.canBake(this.temperature / 10, inputItem.getItemDamage())){
+						} else if (inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() <= 2
+								&& outputItem.getItemDamage() - inputItem.getItemDamage() == 1) {
+							if (ItemCoffeeBean.canBake(this.temperature / 10, inputItem.getItemDamage())) {
 								outputItem = new ItemStack(Items.coffeeBean, ++outputItem.stackSize, inputItem.getItemDamage() + 1);
 								this.temperature -= world.rand.nextInt(3) * 10;
-							}else{
+							} else {
 								outputItem = new ItemStack(Items.coffeeBean, ++outputItem.stackSize, 4);
 								this.temperature -= world.rand.nextInt(3) * 10;
 							}
-							if(inputItem.stackSize == 1){
+							if (inputItem.stackSize == 1) {
 								inputItem = null;
-							}else{
+							} else {
+								inputItem.stackSize--;
+							}
+						} else if (inputItem.getItem() == Items.dirtIngot && inputItem.getItemDamage() == 0) {
+							if (this.temperature >= 400) {
+								outputItem.stackSize++;
+								this.temperature -= world.rand.nextInt(3) * 10;
+							} else {
+								this.temperature -= world.rand.nextInt(3) * 10;
+							}
+							if (inputItem.stackSize == 1) {
+								inputItem = null;
+							} else {
 								inputItem.stackSize--;
 							}
 						}
@@ -132,13 +159,15 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 			}
 		}
 	}
-	
-	private boolean allowProgress(ItemStack input, ItemStack output){
-		if(input.getItem() == Items.coffeeTreeFruit){
+
+	private boolean allowProgress(ItemStack input, ItemStack output) {
+		if (input.getItem() == Items.coffeeTreeFruit) {
 			return output.getItem() == Items.coffeeBean && output.getItemDamage() == 0;
-		}else if(input.getItem() == Items.coffeeBean && input.getItemDamage() <= 2){
+		} else if (input.getItem() == Items.coffeeBean && input.getItemDamage() <= 2) {
 			return output.getItem() == Items.coffeeBean && output.getItemDamage() - input.getItemDamage() == 1;
-		}else{
+		} else if (input.getItem() == Items.dirtIngot && input.getItemDamage() == 0){
+			return output.getItem() == Items.dirtIngot && output.getItemDamage() == 1;
+		} else {
 			return false;
 		}
 	}
@@ -254,7 +283,8 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 			return 0;
 		} else {
 			Item item = stack.getItem();
-			if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air) {
+			if (item instanceof ItemBlock
+					&& Block.getBlockFromItem(item) != Blocks.air) {
 				Block block = Block.getBlockFromItem(item);
 				if (block == Blocks.wooden_slab) {
 					return 1;
@@ -267,16 +297,19 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 				if (block == Blocks.coal_block) {
 					return 500;
 				}
-				
+
 				if (block == Blocks.ice) {
 					return -100;
 				}
 			}
-			if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD"))
+			if (item instanceof ItemTool
+					&& ((ItemTool) item).getToolMaterialName().equals("WOOD"))
 				return 2;
-			if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD"))
+			if (item instanceof ItemSword
+					&& ((ItemSword) item).getToolMaterialName().equals("WOOD"))
 				return 2;
-			if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD"))
+			if (item instanceof ItemHoe
+					&& ((ItemHoe) item).getToolMaterialName().equals("WOOD"))
 				return 2;
 			if (item == Item.getItemById(280))
 				return 1;
@@ -288,7 +321,7 @@ public class TileEntityCoffeeBaker extends TileEntity implements IInventory {
 				return 1;
 			if (item == Item.getItemById(369))
 				return 150;
-			return (int)Math.floor(GameRegistry.getFuelValue(stack) / 16.0F);
+			return (int) Math.floor(GameRegistry.getFuelValue(stack) / 16.0F);
 		}
 	}
 }

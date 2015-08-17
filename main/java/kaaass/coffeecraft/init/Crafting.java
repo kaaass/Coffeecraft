@@ -64,6 +64,13 @@ public class Crafting extends IInits {
 			"ABA",
 			"AAA",
 			'A', Item.getItemById(280), 'B', Items.filterNet});
+		GameRegistry.addRecipe(new ItemStack(Items.dirtIngot, 1, 0), new Object[]{
+			"AAA", 
+			'A', Block.getBlockById(3)});
+		GameRegistry.addRecipe(new ItemStack(Items.coffeeCup, 1), new Object[]{
+			"A A", 
+			" A ", 
+			'A', new ItemStack(Items.dirtIngot, 1, 1)});
 		GameRegistry.addRecipe(new ItemStack(Blocks.coffeeBaker, 1), new Object[]{
 			"DED", 
 			"CBC",
@@ -78,6 +85,13 @@ public class Crafting extends IInits {
 			'A', Block.getBlockById(42), 'B', Item.getItemById(264), 
 			'C', Block.getBlockById(33), 'D', Items.coffeeCore,
 			'E', Block.getBlockById(152)});
+		GameRegistry.addRecipe(new ItemStack(Blocks.extractingMachine, 1), new Object[]{
+			"ACA", 
+			"BDB",
+			"BEB",
+			'A', Item.getItemById(331), 'B', Item.getItemById(265), 
+			'C', Items.coffeeCore, 'D', new ItemStack(Items.extractionFactor, 1, 0),
+			'E', new ItemStack(Items.extractionFactor, 1, 1)});
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.extractionFactor, 1, 1), new Object[]{new ItemStack(Items.extractionFactor, 1, 0), Item.getItemById(376)});
 		

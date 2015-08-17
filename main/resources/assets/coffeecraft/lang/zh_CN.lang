@@ -12,6 +12,13 @@ item.coffeeBean.steamed.name=咖啡豆(蒸培)
 item.coffeeBean.dried.name=咖啡豆(脱水)
 item.coffeeBean.baked.name=咖啡豆(初步烘焙)
 item.coffeeBean.burnt.name=焦咖啡豆
+item.coffee.name=咖啡
+item.coffee.blackCoffee.name=黑咖啡
+item.coffee.milkCoffee.name=牛奶咖啡
+item.coffee.latte.name=拿铁
+item.coffee.mocha.name=摩卡
+item.coffee.espresso.name=意式浓缩
+item.coffee.cappuccino.name=卡布奇诺
 item.coffeePowder.name=咖啡粉
 item.cocoaPowder.name=可可粉
 item.coffeePill.name=咖啡丸
@@ -30,6 +37,11 @@ item.antiCaffeineFactor.name=反咖啡因提取因子
 item.filterNet.name=过滤网芯
 item.filter.name=过滤网
 item.mixedPowder.name=混合粉末
+item.dirtIngot.name=土锭
+item.chinaIngot.name=陶瓷锭
+item.coffeeCup.name=咖啡杯
+
+info.coffeeCore=发着神奇的光。
 
 container.inventory=背包
 container.coffeeBaker=咖啡烘焙机

@@ -107,21 +107,11 @@ public class Caffeine {
 	}
 	
 	private static int find(EntityPlayer player){
-		for(int i = 0; i < playerList.size(); i++){
-			if(playerList.get(i) == player){
-				return i;
-			}
-		}
-		return -1;
+		return playerList.indexOf(player);
 	}
 	
 	private static int find(String name){
-		for(int i = 0; i < nameList.size(); i++){
-			if(nameList.get(i) == name){
-				return i;
-			}
-		}
-		return -1;
+		return nameList.indexOf(name);
 	}
 	
 	public static void update(World world, EntityPlayer player){

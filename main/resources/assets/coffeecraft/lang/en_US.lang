@@ -12,6 +12,13 @@ item.coffeeBean.steamed.name=Coffee Bean(Steamed)
 item.coffeeBean.dried.name=Coffee Bean(Dried)
 item.coffeeBean.baked.name=Coffee Bean(Baked)
 item.coffeeBean.burnt.name=Burnt Coffee Bean
+item.coffee.name=Coffee
+item.coffee.blackCoffee.name=Black Coffee
+item.coffee.milkCoffee.name=Milk Coffee
+item.coffee.latte.name=Latte
+item.coffee.mocha.name=Mocha
+item.coffee.espresso.name=Espresso
+item.coffee.cappuccino.name=Cappuccino
 item.coffeePowder.name=Coffee Powder
 item.cocoaPowder.name=Cocoa Powder
 item.coffeePill.name=Coffee Pill
@@ -30,6 +37,11 @@ item.antiCaffeineFactor.name=Anti Caffeine Factor
 item.filterNet.name=Filter Net
 item.filter.name=Filter
 item.mixedPowder.name=Mixed Powder
+item.dirtIngot.name=Dirt Ingot
+item.chinaIngot.name=Ceramics Ingot
+item.coffeeCup.name=Coffee Cup
+
+info.coffeeCore=Lighting as magic.
 
 container.inventory=Inventory
 container.coffeeBaker=Coffee Baker

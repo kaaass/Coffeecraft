@@ -5,13 +5,16 @@ import kaaass.coffeecraft.item.ItemAntiCaffeineTablet;
 import kaaass.coffeecraft.item.ItemCaffeine;
 import kaaass.coffeecraft.item.ItemCaffeineTablet;
 import kaaass.coffeecraft.item.ItemCocoaPowder;
+import kaaass.coffeecraft.item.ItemCoffee;
 import kaaass.coffeecraft.item.ItemCoffeeBean;
 import kaaass.coffeecraft.item.ItemCoffeeCoin;
 import kaaass.coffeecraft.item.ItemCoffeeCore;
+import kaaass.coffeecraft.item.ItemCoffeeCup;
 import kaaass.coffeecraft.item.ItemCoffeePill;
 import kaaass.coffeecraft.item.ItemCoffeePowder;
 import kaaass.coffeecraft.item.ItemCoffeeTreeFruit;
 import kaaass.coffeecraft.item.ItemCoffeeTreeSapling;
+import kaaass.coffeecraft.item.ItemDirtIngot;
 import kaaass.coffeecraft.item.ItemExtractionFactor;
 import kaaass.coffeecraft.item.ItemFat;
 import kaaass.coffeecraft.item.ItemFilter;
@@ -27,6 +30,7 @@ public class Items extends IInits{
 	public static Item coffeeTreeFruit;
 	public static Item coffeeTreeSapling;
 	public static Item coffeeBean;
+	public static Item coffee;
 	public static Item coffeePowder;
 	public static Item cocoaPowder;
 	public static Item coffeePill;
@@ -43,6 +47,8 @@ public class Items extends IInits{
 	public static Item filterNet;
 	public static Item filter;
 	public static Item mixedPowder;
+	public static Item dirtIngot;
+	public static Item coffeeCup;
 	
 	public Items(){
 		super("Items");
@@ -52,6 +58,7 @@ public class Items extends IInits{
 		coffeeTreeFruit = new ItemCoffeeTreeFruit();
 		coffeeTreeSapling = new ItemCoffeeTreeSapling();
 		coffeeBean = new ItemCoffeeBean();
+		coffee = new ItemCoffee();
 		coffeePowder = new ItemCoffeePowder();
 		cocoaPowder = new ItemCocoaPowder();
 		coffeePill = new ItemCoffeePill();
@@ -68,10 +75,13 @@ public class Items extends IInits{
 		filterNet = new ItemFilterNet();
 		filter = new ItemFilter();
 		mixedPowder = new ItemMixedPowder();
+		dirtIngot = new ItemDirtIngot();
+		coffeeCup = new ItemCoffeeCup();
 		
 		GameRegistry.registerItem(coffeeTreeFruit, "coffeeTreeFruit");
 		GameRegistry.registerItem(coffeeTreeSapling, "coffeeTreeSapling");
 		GameRegistry.registerItem(coffeeBean, "coffeeBean");
+		GameRegistry.registerItem(coffee, "coffee");
 		GameRegistry.registerItem(coffeePowder, "coffeePowder");
 		GameRegistry.registerItem(cocoaPowder, "cocoaPowder");
 		GameRegistry.registerItem(coffeePill, "coffeePill");
@@ -88,6 +98,8 @@ public class Items extends IInits{
 		GameRegistry.registerItem(filterNet, "filterNet");
 		GameRegistry.registerItem(filter, "filter");
 		GameRegistry.registerItem(mixedPowder, "mixedPowder");
+		GameRegistry.registerItem(dirtIngot, "dirtIngot");
+		GameRegistry.registerItem(coffeeCup, "coffeeCup");
 	}
 
 	public void load() {
