@@ -126,7 +126,7 @@ public class BlockCoffeeTreeLeave extends BlockLeavesBase implements IShearable 
 		}else{
 			removeLeaves(world, x, y, z);
 		}
-		if(world.getBlock(x, y - 1, z) == Block.getBlockById(0) && rand.nextInt(44) == 0){
+		if(world.getBlock(x, y - 1, z) == Block.getBlockById(0) && rand.nextInt(120) == 0){
 			world.setBlock(x, y - 1, z, Blocks.coffeeTreeFruitBlock);
 			world.setBlockMetadataWithNotify(x, y - 1, z, 1 << 2 | rand.nextInt(4), 2);
 		}

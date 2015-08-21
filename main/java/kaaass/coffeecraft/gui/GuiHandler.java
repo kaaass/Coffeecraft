@@ -2,6 +2,7 @@ package kaaass.coffeecraft.gui;
 
 import kaaass.coffeecraft.init.Gui;
 import kaaass.coffeecraft.tileentity.TileEntityCoffeeBaker;
+import kaaass.coffeecraft.tileentity.TileEntityCoffeeExchangeCenter;
 import kaaass.coffeecraft.tileentity.TileEntityCoffeeGrinder;
 import kaaass.coffeecraft.tileentity.TileEntityExtractingMachine;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,6 +20,10 @@ public class GuiHandler implements IGuiHandler {
 				return new GuiCoffeeGrinder(player.inventory, (TileEntityCoffeeGrinder)player.worldObj.getTileEntity(x, y, z));
 			case Gui.COFFEE_EXTRACT_ID:
 				return new GuiExtractingMachine(player.inventory, (TileEntityExtractingMachine)player.worldObj.getTileEntity(x, y, z));
+			case Gui.COFFEE_MAKER_ID:
+				return null;
+			case Gui.COFFEE_EXCHANGE_ID:
+				return new GuiCoffeeExchangeCenter(player.inventory, (TileEntityCoffeeExchangeCenter)player.worldObj.getTileEntity(x, y, z), player);
 		}
 		return null;
 	}
@@ -32,6 +37,10 @@ public class GuiHandler implements IGuiHandler {
 				return new ContainerCoffeeGrinder(player.inventory, (TileEntityCoffeeGrinder)player.worldObj.getTileEntity(x, y, z));
 			case Gui.COFFEE_EXTRACT_ID:
 				return new ContainerExtractingMachine(player.inventory, (TileEntityExtractingMachine)player.worldObj.getTileEntity(x, y, z));
+			case Gui.COFFEE_MAKER_ID:
+				return null;
+			case Gui.COFFEE_EXCHANGE_ID:
+				return new ContainerCoffeeExchangeCenter(player.inventory, (TileEntityCoffeeExchangeCenter)player.worldObj.getTileEntity(x, y, z));
 	    }
 	    return null;
 	}

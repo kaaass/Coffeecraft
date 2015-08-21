@@ -2,6 +2,7 @@ package kaaass.coffeecraft.caffeine;
 
 import kaaass.coffeecraft.network.PacketMain;
 import kaaass.coffeecraft.network.packet.PacketCaffeineInfo;
+import kaaass.coffeecraft.util.NBTUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -10,7 +11,7 @@ public class CaffeinePlayerInfo {
 	private static final String NBT_CAFFEINE = "Caffeine";
 	
 	public static int read(EntityPlayer player){
-		NBTTagCompound persisted = getPersistedFromPlayer(player);
+		NBTTagCompound persisted = NBTUtils.getPersistedFromPlayer(player);
         if (persisted.hasKey(NBT_ROOT)){
         	return read(persisted);
         }
@@ -25,7 +26,7 @@ public class CaffeinePlayerInfo {
     }
 	
 	public static void write(EntityPlayer player, int caffeine){
-        NBTTagCompound persisted = getPersistedFromPlayer(player);
+        NBTTagCompound persisted = NBTUtils.getPersistedFromPlayer(player);
         write(persisted, caffeine);
     }
 
@@ -35,14 +36,6 @@ public class CaffeinePlayerInfo {
         }
         NBTTagCompound root = tagCompound.getCompoundTag(NBT_ROOT);
         root.setInteger(NBT_CAFFEINE, caffeine);
-    }
-    
-    private static NBTTagCompound getPersistedFromPlayer(EntityPlayer player){
-    	NBTTagCompound tagCompound = player.getEntityData();
-    	if (!tagCompound.hasKey(EntityPlayer.PERSISTED_NBT_TAG)){
-			tagCompound.setTag(EntityPlayer.PERSISTED_NBT_TAG, new NBTTagCompound());
-        }
-		return tagCompound.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
     }
     
     public static void onLogin(EntityPlayer player){

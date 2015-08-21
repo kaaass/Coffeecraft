@@ -1,6 +1,7 @@
 package kaaass.coffeecraft.init;
 
 import kaaass.coffeecraft.block.BlockCoffeeBaker;
+import kaaass.coffeecraft.block.BlockCoffeeExchangeCenter;
 import kaaass.coffeecraft.block.BlockCoffeeGrinder;
 import kaaass.coffeecraft.block.BlockCoffeeTreeFruit;
 import kaaass.coffeecraft.block.BlockCoffeeTreeLeave;
@@ -18,6 +19,7 @@ public class Blocks extends IInits{
 	public static Block coffeeBaker;
 	public static Block coffeeGrinder;
 	public static Block extractingMachine;
+	public static Block coffeeExchangeCenter;
 	
 	public static Block coffeeTreeFruitBlock;
 	public static Block coffeeTreeLeaveBlock;
@@ -33,6 +35,7 @@ public class Blocks extends IInits{
 		coffeeBaker = new BlockCoffeeBaker();
 		coffeeGrinder = new BlockCoffeeGrinder();
 		extractingMachine = new BlockExtractingMachine();
+		coffeeExchangeCenter = new BlockCoffeeExchangeCenter();
 		
 		coffeeTreeFruitBlock = new BlockCoffeeTreeFruit();
 		coffeeTreeLeaveBlock = new BlockCoffeeTreeLeave();
@@ -42,6 +45,7 @@ public class Blocks extends IInits{
 		GameRegistry.registerBlock(coffeeBaker, "coffeeBaker");
 		GameRegistry.registerBlock(coffeeGrinder, "coffeeGrinder");
 		GameRegistry.registerBlock(extractingMachine, "extractingMachine");
+		GameRegistry.registerBlock(coffeeExchangeCenter, "coffeeExchangeCenter");
 		
 		GameRegistry.registerBlock(coffeeTreeFruitBlock, "coffeeTreeFruitBlock");
 		GameRegistry.registerBlock(coffeeTreeLeaveBlock, "coffeeTreeLeaveBlock");

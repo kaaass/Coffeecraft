@@ -3,6 +3,7 @@ itemGroup.coffeecraft=CoffeeCraft
 tile.coffeeBaker.name=Coffee Baker
 tile.coffeeGrinder.name=Coffee Grinder
 tile.extractingMachine.name=Extracting Machine
+tile.coffeeExchangeCenter.name=Coffee Exchange Center
 tile.factorOre.name=Factor Ore
 
 item.coffeeTreeFruit.name=Coffee Tree Fruit
@@ -47,6 +48,7 @@ container.inventory=Inventory
 container.coffeeBaker=Coffee Baker
 container.coffeeGrinder=Coffee Grinder
 container.extractingMachine=Extracting Machine
+container.coffeeExchangeCenter=Coffee Exchange Center
 
 coffeecraft.chat.tomuchcaffeine=You're too excited to sleep. Maybe you've eaten too much caffeine.
 

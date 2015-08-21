@@ -27,14 +27,12 @@ public class Caffeine {
 		playerList.add(player);
 		nameList.add(player.getDisplayName());
 		caffeineList.add(0);
-		CaffeinePlayerInfo.onUse(player, 0);
 	}
 	
 	public static void addPlayer(EntityPlayer player, int caffeine){
 		playerList.add(player);
 		nameList.add(player.getDisplayName());
 		caffeineList.add(caffeine);
-		CaffeinePlayerInfo.onUse(player, caffeine);
 	}
 	
 	public static void removePlayer(EntityPlayer player){
@@ -42,7 +40,6 @@ public class Caffeine {
 		playerList.remove(a);
 		nameList.remove(a);
 		caffeineList.remove(a);
-		CaffeinePlayerInfo.onUse(player, 0);
 	}
 	
 	public static void addCaffeine(EntityPlayer player, int add){

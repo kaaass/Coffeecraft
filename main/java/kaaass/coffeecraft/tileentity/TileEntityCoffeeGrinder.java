@@ -36,7 +36,7 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 			// progress
 			if (inputItem != null && world.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord) && world.getBlock(xCoord, yCoord + 1, zCoord) == Blocks.anvil) {
 				if (outputItem == null) {
-					if((inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() == 3) || (inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() != 15)){
+					if((inputItem.getItem() == Items.coffeeBean && inputItem.getItemDamage() == 3) || (inputItem.getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.wool) && inputItem.getItemDamage() != 15)){
 						this.progressTime++;
 					}
 					if (this.progressTime == 600) {
@@ -53,19 +53,19 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
 								inputItem = null;
 							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 0){
+						}else if(inputItem.getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.wool) && inputItem.getItemDamage() == 0){
 							if(inputItem.stackSize >= 5){
 								if(inputItem.stackSize == 5){
 									inputItem = null;
 								}else{
 									inputItem.stackSize -= 5;
 								}
-								outputItem = new ItemStack(Item.getItemById(287), 3 + world.rand.nextInt(8));
+								outputItem = new ItemStack(net.minecraft.init.Items.string, 3 + world.rand.nextInt(8));
 							}else{
 								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
 								inputItem = null;
 							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 3){
+						}else if(inputItem.getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.wool) && inputItem.getItemDamage() == 3){
 							if(inputItem.stackSize >= 3){
 								if(inputItem.stackSize == 3){
 									inputItem = null;
@@ -77,14 +77,14 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
 								inputItem = null;
 							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() != 15){
+						}else if(inputItem.getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.wool) && inputItem.getItemDamage() != 15){
 							if(inputItem.stackSize >= 2){
 								if(inputItem.stackSize == 2){
 									inputItem = null;
 								}else{
 									inputItem.stackSize -= 2;
 								}
-								outputItem = new ItemStack(Item.getItemById(351), 3 + world.rand.nextInt(13), 15 - inputItem.getItemDamage());
+								outputItem = new ItemStack(net.minecraft.init.Items.dye, 3 + world.rand.nextInt(13), 15 - inputItem.getItemDamage());
 							}else{
 								outputItem = new ItemStack(Items.mixedPowder, inputItem.stackSize);
 								inputItem = null;
@@ -106,7 +106,7 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 								}
 								outputItem.stackSize++;
 							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 0){
+						}else if(inputItem.getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.wool) && inputItem.getItemDamage() == 0){
 							if(inputItem.stackSize >= 5){
 								if(inputItem.stackSize == 5){
 									inputItem = null;
@@ -115,7 +115,7 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 								}
 								outputItem.stackSize += 3 + world.rand.nextInt(8);
 							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() == 3){
+						}else if(inputItem.getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.wool) && inputItem.getItemDamage() == 3){
 							if(inputItem.stackSize >= 3){
 								if(inputItem.stackSize == 3){
 									inputItem = null;
@@ -124,7 +124,7 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 								}
 								outputItem.stackSize += 2;
 							}
-						}else if(inputItem.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && inputItem.getItemDamage() != 15){
+						}else if(inputItem.getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.wool) && inputItem.getItemDamage() != 15){
 							if(inputItem.stackSize >= 2){
 								if(inputItem.stackSize == 2){
 									inputItem = null;
@@ -147,12 +147,12 @@ public class TileEntityCoffeeGrinder extends TileEntity implements IInventory {
 	private boolean allowProgress(ItemStack input, ItemStack output){
 		if(input.getItem() == Items.coffeeBean && input.getItemDamage() == 3){
 			return output.getItem() == Items.coffeePowder;
-		}else if(input.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && input.getItemDamage() == 0){
-			return output.getItem() == Item.getItemById(287);
-		}else if(input.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && input.getItemDamage() == 3){
+		}else if(input.getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.wool) && input.getItemDamage() == 0){
+			return output.getItem() == net.minecraft.init.Items.string;
+		}else if(input.getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.wool) && input.getItemDamage() == 3){
 			return output.getItem() == Items.cocoaPowder;
-		}else if(input.getItem() == Item.getItemFromBlock(Block.getBlockById(35)) && input.getItemDamage() != 15){
-			return output.getItem() == Item.getItemById(351) && input.getItemDamage() + output.getItemDamage() == 15;
+		}else if(input.getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.wool) && input.getItemDamage() != 15){
+			return output.getItem() == net.minecraft.init.Items.dye && input.getItemDamage() + output.getItemDamage() == 15;
 		}else{
 			return false;
 		}
