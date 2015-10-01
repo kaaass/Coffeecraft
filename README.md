@@ -1,4 +1,4 @@
-# Coffeecraft
+# Coffeecraft [![Build Status](https://travis-ci.org/kaaass/Coffeecraft.svg?branch=master)](https://travis-ci.org/kaaass/Coffeecraft)
 
 For minecraft forge modder: This mod requires 1.7.10. And it's built on minecraft forge 1.7.10-10.13.4.1448.
 
